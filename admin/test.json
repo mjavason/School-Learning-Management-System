@@ -1,0 +1,54 @@
+[
+    {
+        "reg_num": "2017030180311",
+        "incourse": [
+            {
+                "title": "Quiz",
+                "total": 100,
+                "score": 100
+            },
+            {
+                "title": "Project",
+                "total": 100,
+                "score": 25
+            }
+        ],
+        "exam": [
+            {
+                "title": "Exam",
+                "total": 70,
+                "score": 25
+            }
+        ]
+    },
+    {
+        "reg_num": "2517819440",
+        "incourse": [
+            {
+                "title": "Quiz",
+                "total": 100,
+                "score": 25
+            }
+        ]
+    },
+    {
+        "reg_num": "2504338430",
+        "exam": [
+            {
+                "title": "Exam",
+                "total": 70,
+                "score": 25
+            }
+        ]
+    },
+    {
+        "reg_num": "2506239642",
+        "exam": [
+            {
+                "title": "Exam",
+                "total": 70,
+                "score": 25
+            }
+        ]
+    }
+]
