@@ -29,17 +29,15 @@
 										<li class="dropdown">
 											<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="test">Test PHP</a>
 										</li>
-										<?php if (!str_contains($_SERVER['PHP_SELF'], 'register')) { ?>
-											<?php if (!isset($_SESSION['log'])) { ?>
-												<li class="dropdown">
-													<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="register">Register</a>
-												</li>
-											<?php } else { ?>
-												<li class="dropdown">
-													<a onclick="logout()" class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95">Logout</a>
-												</li>
-											<?php	} ?>
-										<?php } ?>
+										<?php if (!isset($_SESSION['log'])) { ?>
+											<li class="dropdown">
+												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="register">Register</a>
+											</li>
+										<?php } else { ?>
+											<li class="dropdown">
+												<a onclick="logout()" class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95">Logout</a>
+											</li>
+										<?php	} ?>
 
 
 									</ul>
@@ -49,9 +47,7 @@
 								<i class="fas fa-bars"></i>
 							</button>
 						</div>
-						<?php if (!str_contains($_SERVER['PHP_SELF'], 'register')) { ?>
-							<!-- <a class="btn btn-primary btn-rounded font-weight-semibold text-3 btn-px-5 btn-py-2 order-1 order-lg-2 d-md-block me-3 me-lg-0" data-hash data-hash-offset="0" data-hash-offset-lg="65" href="register">Register</a> -->
-						<?php } ?>
+
 						<?php if (isset($_SESSION['user_name']) && isset($_SESSION['log'])) { ?>
 							<a class="btn btn-primary btn-rounded font-weight-semibold text-3 btn-px-5 btn-py-2 order-1 order-lg-2 d-md-block me-3 me-lg-0" data-hash data-hash-offset="0" data-hash-offset-lg="65" href="index"><?= $_SESSION['user_name'] ?></a>
 						<?php } ?>
