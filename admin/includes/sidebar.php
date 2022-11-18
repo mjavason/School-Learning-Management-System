@@ -73,7 +73,7 @@
 
 
             <li class="nav-item">
-                <a onclick="showAlert('Coming Soon!')" class="nav-link"><i class="flaticon-settings"></i><span>Account Settings</span></a>
+                <a href="edit-profile" class="nav-link"><i class="flaticon-settings"></i><span>Account Settings</span></a>
             </li>
             
             <li class="nav-item">
