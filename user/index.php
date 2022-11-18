@@ -20,7 +20,7 @@ if (isset($_SESSION['ultra_log'])) {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>ESUT Result Repo</title>
+	<title>ESUT Repo</title>
 
 	<meta name="keywords" content="ESUT result school students courses upload" />
 	<meta name="description" content="View course results online">
@@ -44,7 +44,7 @@ if (isset($_SESSION['ultra_log'])) {
 					<div class="col-lg-6 pt-4 pt-lg-0 mt-5 mt-lg-0 mb-5 mb-lg-0">
 						<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
 							<h1 class="mb-4 mb-md-0 mb-xl-3" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 1, 'transition': true, 'horizontal': false}">
-								View and download school results <strong>Online</strong> through our secure database.
+								View and download school results, course materials, notes <strong>Online</strong> through our secure database.
 							</h1>
 						</div>
 						<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
