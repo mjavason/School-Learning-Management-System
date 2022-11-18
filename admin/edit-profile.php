@@ -78,29 +78,29 @@ if (!isset($_SESSION['super_log'])) {
                                             </select>
                                         </div>
                                         <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                            <label>E-Mail</label>
+                                            <label>E-Mail *</label>
                                             <input value="<?= $_SESSION['lecturer_email'] ?>" id="email" type="email" placeholder="" class="form-control">
                                         </div>
                                         <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                            <label>Phone</label>
+                                            <label>Phone *</label>
                                             <input value="<?= $_SESSION['phone'] ?>" id="phone" type="tel" placeholder="" class="form-control">
                                         </div>
                                         <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                            <label>Department</label>
+                                            <label>Department *</label>
                                             <input value="<?= getDepartmentName($_SESSION['lecturer_department']) ?>" id="department" type="text" placeholder="" class="form-control">
                                         </div>
                                         <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                            <label>Title</label>
+                                            <label>Title *</label>
                                             <input value="<?= $_SESSION['lecturer_title'] ?>" id="title" type="text" placeholder="" class="form-control">
                                         </div>
                                         <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                            <label>Staff ID Number</label>
+                                            <label>Staff ID Number *</label>
                                             <input readonly value="<?= $_SESSION['staff_id_number'] ?>" id="staff_id_number" type="text" placeholder="" class="form-control">
                                         </div>
 
                                         <div class="col-12 form-group mg-t-8">
                                             <button type="button" onclick="updateLecturerProfile('functions/editProfile', getInputValuesAndReturnTheirContentAsJson(['first_name', 'last_name', 'gender', 'email', 'phone', 'department', 'title', 'staff_id_number']))" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
-                                            <!-- <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button> -->
+                                            <a href="edit-profile" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</a>
                                         </div>
                                     </div>
                                 </form>
