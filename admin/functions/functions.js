@@ -191,6 +191,8 @@ function createNewCourseSession(url, dataRequest) {
         })
 }
 
+
+
 function simpleAjaxGetRequest(url, dataRequest) {
     $.get(url, // url
         dataRequest,
@@ -1085,6 +1087,109 @@ function updateResults(url, dataRequest) {
             }
 
         })
+}
+
+function updateLecturerProfile(url, dataRequest) {
+    console.log(dataRequest);
+    // setLoader();
+    $.post(url,   // url
+        dataRequest,//{ myData: 'This is my data.' }, // data to be submit
+        function (data, status, jqXHR) {// success callback
+            //$('#ajax_result').value = ('status: ' + status + ', data: ' + data + '<br>');
+            console.log(data);
+            var dataParsed = JSON.parse(data);
+            //console.log(dataParsed);
+            //removeLoader();
+
+            if (dataParsed[0].error == null) {
+                swal(dataParsed[0].success, {
+                    title: "Success",
+                    icon: "success"
+                })
+
+                    .then((value) => {
+                        if (value) {
+                            //swal(`The returned value is: ${value}`);
+                            window.location = 'my-profile';
+                        } else {
+                            //swal(`The returned value is: ${value}`);
+                            window.location = 'my-profile';
+                        }
+                    });
+
+            } else {
+                swal({
+                    //title: "New Course",
+                    title: "Error",
+                    icon: "error",
+                    //text: "Error: " + dataParsed[0].error
+                    text: dataParsed[0].error
+                    //button: "Got It!",
+                });
+
+            }
+
+        })
+}
+
+function updatePassword(url, dataRequest) {
+    console.log(dataRequest);
+    // setLoader();
+
+    swal({
+        title: 'Change Password!',
+        text: 'Are you sure?',
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.post(url,   // url
+                    dataRequest,//{ myData: 'This is my data.' }, // data to be submit
+                    function (data, status, jqXHR) {// success callback
+                        //$('#ajax_result').value = ('status: ' + status + ', data: ' + data + '<br>');
+                        var dataParsed = JSON.parse(data);
+                        console.log(data);
+                        // console.log(dataParsed);
+                        //removeLoader();
+
+                        if (dataParsed[0].error == null) {
+
+                            swal("Password Updated Successfully", {
+                                title: "Success",
+                                icon: "success"
+                            })
+
+                                .then((value) => {
+                                    if (value) {
+                                        //swal(`The returned value is: ${value}`);
+                                        window.location = 'my-profile';
+                                    } else {
+                                        //swal(`The returned value is: ${value}`);
+                                        window.location = 'my-profile';
+                                    }
+                                });
+
+                        } else {
+                            swal({
+                                //title: "New Course",
+                                title: "Error",
+                                icon: "error",
+                                text: "" + dataParsed[0].error
+                                //button: "Got It!",
+                            });
+
+                        }
+
+                    })
+            } else {
+                //swal("Great Choice!");
+            }
+        });
+
+
+
 }
 
 // function dollarFormat(number) {

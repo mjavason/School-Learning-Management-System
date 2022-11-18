@@ -2,20 +2,28 @@
 session_start();
 $db_handle = new DBController();
 
-$first_name = 'Tester';
-$last_name = 'Zero';
-$id = 1;
-$postemail = 'testerzero@mail.com';
-$phone = '08148863871';
+// $first_name = 'Tester';
+// $last_name = 'Zero';
+// $id = 1;
+// $postemail = 'testerzero@mail.com';
+// $phone = '08148863871';
+// $gender = 'Male';
+// $department = getDepartmentName(1);
+// $title = 'Programmer';
+// $staff_id_number = '23434534554';
 
 
-$_SESSION['user_name'] = ucwords(strtolower($first_name)) . " " . ucwords(strtolower($last_name));
-$_SESSION['first_name'] = $first_name;
-$_SESSION['last_name'] = $last_name;
-$_SESSION['full_name'] = $first_name . ' ' . $last_name;
-$_SESSION['lecturer_id'] = $id;
-$_SESSION['lecturer_email'] = $postemail;
-$_SESSION['phone'] = $phone;
+// $_SESSION['user_name'] = ucwords(strtolower($first_name)) . " " . ucwords(strtolower($last_name));
+// $_SESSION['first_name'] = $first_name;
+// $_SESSION['last_name'] = $last_name;
+// $_SESSION['full_name'] = $first_name . ' ' . $last_name;
+// $_SESSION['lecturer_id'] = $id;
+// $_SESSION['lecturer_email'] = $postemail;
+// $_SESSION['lecturer_gender'] = $gender;
+// $_SESSION['lecturer_department'] = $department;
+// $_SESSION['phone'] = $phone;
+// $_SESSION['lecturer_title'] = $title;
+// $_SESSION['staff_id_number'] = $staff_id_number;
 
 // $_SESSION['super_log'] = true;
 
@@ -209,8 +217,11 @@ function validateEmail($email)
   global $db_handle;
   //$response = [];
   $result = $db_handle->selectAllWhere('students', 'email', $email);
+  $result2 = $db_handle->selectAllWhere('lecturers', 'email', $email);
+  $result3 = $db_handle->selectAllWhere('super_admins', 'email', $email);
 
-  return isset($result) && count($result) > 0;
+
+  return isset($result) && count($result) > 0 && isset($result2) && count($result2) > 0 && isset($result3) && count($result3) > 0;
 }
 
 function validateStudentRegNumber($reg)
@@ -440,7 +451,6 @@ function returnGrade($score)
 
 
 
-
 ////////////////////////////////////////////////////////////////////////// LECTURER SECTION ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #region
 
@@ -622,6 +632,20 @@ function getLecturerName($id)
     return $result[0]['first_name'] . ' ' . $result[0]['last_name'];
   } else {
     createLog('Failed', 'getLecturerName');
+    return false;
+  }
+}
+
+function getAllLecturerInfo($id)
+{
+  global $db_handle;
+
+  $result = $db_handle->selectAllWhere('lecturers', 'id', $id);
+  if (isset($result)) {
+    // createLog('Success', 'getLecturerName');
+    return $result[0];
+  } else {
+    // createLog('Failed', 'getLecturerName');
     return false;
   }
 }
@@ -1014,9 +1038,75 @@ function loadIncourseResults($resultIncourseRow, $targetColumn)
   return false;
 }
 
+function updateLecturerProfile($lecturerId, $firstName, $lastName, $gender, $email, $phone, $departmentId, $title, $staffIdNumber)
+{
+  global $db_handle;
+  $email = sanitize($email, 'none');
 
+  $query = "UPDATE `lecturers` SET 
+  `first_name` = '$firstName',
+  `last_name` = '$lastName',
+  `gender` = '$gender',
+  `email` = '$email',
+  `phone` = '$phone',	
+  `department_id` = $departmentId,
+  `title` = '$title',
+  `staff_id_number` = '$staffIdNumber'
+   WHERE `lecturers`.`id` = $lecturerId";
 
+  if ($db_handle->runQueryWithoutResponse($query)) {
+    $_SESSION['user_name'] = ucwords(strtolower($firstName)) . " " . ucwords(strtolower($lastName));
+    $_SESSION['first_name'] = $firstName;
+    $_SESSION['last_name'] = $lastName;
+    $_SESSION['full_name'] = $firstName . ' ' . $lastName;
+    $_SESSION['lecturer_email'] = $email;
+    $_SESSION['lecturer_title'] = $title;
+    $_SESSION['phone'] = $phone;
+    $_SESSION['lecturer_gender'] = $gender;
+    $_SESSION['lecturer_department'] = $departmentId;
+    $_SESSION['staff_id_number'] = $staffIdNumber;
+    // createLog('Success', 'updateCourseSession');
+    return true;
+  } else {
+    // createLog('Failed', 'updateCourseSession');
+    return false;
+  }
+}
 
+function getDepartmentName($id)
+{
+  global $db_handle;
+  //$response = [];
+  $result = $db_handle->selectAllWhere('departments', 'id', $id);
 
+  if (isset($result)) {
+    // createLog('Success', 'getStudentName');
+    return ($result[0]['department_name']);
+  } else {
+    // createLog('Failed', 'getStudentName');
+    return false;
+  }
+}
 
+function formatDateFriendlier($date)
+{
+  return date('d', strtotime($date)) . '-' . date('M', strtotime($date)) . '-' . date('Y', strtotime($date));
+}
+
+function updateLecturerPassword($lecturerId, $newPassword)
+{
+  global $db_handle;
+$newPassword = sha1($newPassword);
+  $query = "UPDATE `lecturers` SET 
+  `password` = '$newPassword'
+   WHERE `lecturers`.`id` = $lecturerId";
+
+  if ($db_handle->runQueryWithoutResponse($query)) {
+    // createLog('Success', 'updateCourseSession');
+    return true;
+  } else {
+    // createLog('Failed', 'updateCourseSession');
+    return false;
+  }
+}
 #endregion

@@ -278,6 +278,11 @@ function confirmUserEmailAndPassword($postemail, $postpassword, $rememberMe)
         $_SESSION['lecturer_email'] = $postemail;
         $_SESSION['lecturer_title'] = $title;
         $_SESSION['phone'] = $phone;
+        $_SESSION['lecturer_gender'] = $gender;
+        $_SESSION['lecturer_department'] = $department_id;
+        $_SESSION['staff_id_number'] = $staff_id_number;
+        $_SESSION['date_created'] = $date_created;
+        $_SESSION['date_updated'] = $date_updated;
 
         $_SESSION['super_log'] = true;
 

@@ -71,63 +71,48 @@ if (!isset($_SESSION['super_log'])) {
                                                 <tbody>
                                                     <tr>
                                                         <td>Name:</td>
-                                                        <td class="font-medium text-dark-medium">Steven Johnson</td>
+                                                        <td class="font-medium text-dark-medium"><?= $_SESSION['user_name'] ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td>User Type:</td>
-                                                        <td class="font-medium text-dark-medium">Super Admin</td>
+                                                        <td class="font-medium text-dark-medium">Lecturer</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Gender:</td>
-                                                        <td class="font-medium text-dark-medium">Male</td>
+                                                        <td class="font-medium text-dark-medium"><?= $_SESSION['lecturer_gender'] ?></td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>Father Name:</td>
-                                                        <td class="font-medium text-dark-medium">Steve Jones</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Mother Name:</td>
-                                                        <td class="font-medium text-dark-medium">Naomi Rose</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Date Of Birth:</td>
-                                                        <td class="font-medium text-dark-medium">07.08.2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Religion:</td>
-                                                        <td class="font-medium text-dark-medium">Islam</td>
-                                                    </tr>
+                                                    
                                                     <tr>
                                                         <td>Joining Date:</td>
-                                                        <td class="font-medium text-dark-medium">07.08.2016</td>
+                                                        <td class="font-medium text-dark-medium"><?= formatDateFriendlier($_SESSION['date_created'])  ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td>E-mail:</td>
-                                                        <td class="font-medium text-dark-medium">stevenjohnson@gmail.com</td>
+                                                        <td class="font-medium text-dark-medium"><?= $_SESSION['lecturer_email'] ?></td>
                                                     </tr>
-                                                    <tr>
+                                                    <!-- <tr>
                                                         <td>Subject:</td>
                                                         <td class="font-medium text-dark-medium">English</td>
-                                                    </tr>
-                                                    <tr>
+                                                    </tr> -->
+                                                    <!-- <tr>
                                                         <td>Class:</td>
                                                         <td class="font-medium text-dark-medium">2</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Section:</td>
                                                         <td class="font-medium text-dark-medium">Pink</td>
-                                                    </tr>
+                                                    </tr> -->
                                                     <tr>
                                                         <td>ID No:</td>
-                                                        <td class="font-medium text-dark-medium">10005</td>
+                                                        <td class="font-medium text-dark-medium"><?= $_SESSION['staff_id_number'] ?></td>
                                                     </tr>
-                                                    <tr>
+                                                    <!-- <tr>
                                                         <td>Address:</td>
                                                         <td class="font-medium text-dark-medium">House #10, Road #6, Australia</td>
-                                                    </tr>
+                                                    </tr> -->
                                                     <tr>
                                                         <td>Phone:</td>
-                                                        <td class="font-medium text-dark-medium">+ 88 98568888418</td>
+                                                        <td class="font-medium text-dark-medium"><?= $_SESSION['phone'] ?></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
