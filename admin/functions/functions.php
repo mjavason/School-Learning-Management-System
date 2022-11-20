@@ -875,14 +875,14 @@ function getStudentName($regNum)
   }
 }
 
-function addIncourse($studentRegNum, $gradeTitle, $gradeTotal, $studentScore, $courseId, $courseCredits, $courseSet)
+function addIncourse($studentRegNum, $gradeTitle, $gradeTotal, $studentScore, $courseId, $courseCredits, $courseSet, $gradeComment)
 {
   $student = [];
   $incourseArray = [];
   $studentExists = false;
   $tableExists = false;
   // $studentRegNum = array('reg_num' => $studentRegNum);
-  $incourseArrayItem = array("title" => $gradeTitle, "total" => (int) $gradeTotal, "score" => (int) $studentScore);
+  $incourseArrayItem = array("title" => $gradeTitle, "total" => (int) $gradeTotal, "score" => (int) $studentScore, "comment" => $gradeComment);
 
   for ($i = 0; $i < count($_SESSION['active_course_grades']); $i++) {
     // checks if student exists in database
@@ -925,14 +925,14 @@ function addIncourse($studentRegNum, $gradeTitle, $gradeTotal, $studentScore, $c
   return ($_SESSION['active_course_grades']);
 }
 
-function setExam($studentRegNum, $gradeTitle, $gradeTotal, $studentScore, $courseId, $courseCredits, $courseSet)
+function setExam($studentRegNum, $gradeTitle, $gradeTotal, $studentScore, $courseId, $courseCredits, $courseSet, $gradeComment)
 {
   $student = [];
   $incourseArray = [];
   // $studentRegNum = array('reg_num' => $studentRegNum);
 
   // store all the just inputted result info into an array
-  $incourseArrayItem = array("title" => $gradeTitle, "total" => (int) $gradeTotal, "score" => (int) $studentScore);
+  $incourseArrayItem = array("title" => $gradeTitle, "total" => (int) $gradeTotal, "score" => (int) $studentScore, "comment" => $gradeComment);
 
   $studentExists = false;
   for ($i = 0; $i < count($_SESSION['active_course_grades']); $i++) {
@@ -1031,11 +1031,11 @@ function loadIncourseResults($resultIncourseRow, $targetColumn)
   foreach ($resultIncourseRow as $row) {
     if ($row['title'] == $targetColumn) {
       echo '<td class="text-success">' . $row['score'] . '</td>';
-      return true;
+      return (int)$row['score'];
     }
   }
   echo ('<td class="text-success"><i class="fas fa-times text-danger"></i></td>');
-  return false;
+  return 0;
 }
 
 function updateLecturerProfile($lecturerId, $firstName, $lastName, $gender, $email, $phone, $departmentId, $title, $staffIdNumber)
@@ -1096,7 +1096,7 @@ function formatDateFriendlier($date)
 function updateLecturerPassword($lecturerId, $newPassword)
 {
   global $db_handle;
-$newPassword = sha1($newPassword);
+  $newPassword = sha1($newPassword);
   $query = "UPDATE `lecturers` SET 
   `password` = '$newPassword'
    WHERE `lecturers`.`id` = $lecturerId";
@@ -1109,4 +1109,37 @@ $newPassword = sha1($newPassword);
     return false;
   }
 }
+
+function compileIncourse($incourseArray)
+{
+  $scoretotal = 0;
+  $absoluteTotal = 0;
+  if (isset($incourseArray)) {
+    foreach ($incourseArray as $incourse) {
+      $absoluteTotal += $incourse['total'];
+      $scoretotal += $incourse['score'];
+    }
+  } else {
+    return 0;
+  }
+  return ceil(30 * ((($scoretotal / $absoluteTotal) * 100) / 100));
+}
+
+function compileExam($examArray)
+{
+  $scoretotal = 0;
+  $absoluteTotal = 0;
+  if (isset($examArray)) {
+    foreach ($examArray as $exam) {
+      $absoluteTotal += $exam['total'];
+      $scoretotal += $exam['score'];
+    }
+  } else {
+    return 0;
+  }
+
+  return ceil(70 * ((($scoretotal / $absoluteTotal) * 100) / 100));
+}
+
+// 
 #endregion

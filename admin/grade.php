@@ -69,7 +69,7 @@ if (isset($_GET['result_id']) && isset($_GET['course_id']) && isset($_GET['semes
                                 <form class="new-added-form">
                                     <div class="row">
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
-                                            <label>Incourse Name</label>
+                                            <label>*Incourse Name</label>
                                             <!-- <input type="text" id="grade_title" placeholder="**Quiz 1" class="form-control"> -->
                                             <select on id="grade_title" class="select2">
                                                 <option value="">Please Select</option>
@@ -82,33 +82,36 @@ if (isset($_GET['result_id']) && isset($_GET['course_id']) && isset($_GET['semes
                                         </div>
 
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
-                                            <label>Score Total</label>
+                                            <label>*Score Total</label>
                                             <input id="grade_total" value="100" readonly type="text" placeholder="" class="form-control">
                                         </div>
 
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
-                                            <label>Student</label>
+                                            <label>*Student</label>
                                             <select id="student_reg_number" class="select2">
                                                 <option value="">Please Select</option>
                                                 <?php loadStudentsForParticularCourseSession($_SESSION['active_course_set_year']) ?>
                                                 <!-- <option value="1">Orji Michael</option>
                                                 <option value="2">Aruogu Chidiebube</option>
                                                 <option value="3">Monanu Ifenna</option>
-                                                <option value="4">Okorie Oluebube</option>
                                                 <option value="5">Onuoha Stephanie</option> -->
                                             </select>
                                         </div>
 
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
-                                            <label>Student Score</label>
+                                        <label>*Score</label>
                                             <input onkeyup="maxValue('student_score', 100)" id="student_score" max=10 type="number" placeholder="" class="form-control">
+                                        </div>
+                                        <div class="col-12-xxxl col-lg-6 col-12 form-group">
+                                            <label>Comment</label>
+                                            <input type="text" id="grade_comment" placeholder="**Excellent result..." class="form-control">
                                         </div>
                                         <!-- <div class="col-12 form-group">
                                             <label>Comments</label>
                                             <textarea class="textarea form-control" name="message" id="form-message" cols="10" rows="4"></textarea>
                                         </div> -->
                                         <div class="col-12 form-group mg-t-8">
-                                            <button type="button" onclick="updateResults('functions/updateResults', getInputValuesAndReturnTheirContentAsJson(['grade_title', 'grade_total', 'student_reg_number', 'student_score']))" id="add_incourse_button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
+                                            <button type="button" onclick="updateResults('functions/updateResults', getInputValuesAndReturnTheirContentAsJson(['grade_title', 'grade_total', 'student_reg_number', 'student_score', 'grade_comment']))" id="add_incourse_button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
                                             <!-- <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button> -->
                                         </div>
                                     </div>

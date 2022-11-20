@@ -9,17 +9,17 @@ if (!isset($_POST)) {
     extract($_POST);
     switch ($_POST) {
         case (!empty($grade_title) &&
-        !empty($grade_total) &&
-        !empty($student_reg_number) &&
-        !empty($student_score)):
+            !empty($grade_total) &&
+            !empty($student_reg_number) &&
+            !empty($student_score)):
             // if (!isset($_SESSION['course_edit'])) {
             //     $_SESSION['course_edit'] = false;
             // }
-
+            $grade_comment = sanitize($grade_comment, 'none');
             if ($grade_title == "Exam") {
-                setExam($student_reg_number, $grade_title, $grade_total, $student_score, $_SESSION['active_course_id'], $_SESSION['active_course_credits'], $_SESSION['active_course_set_year']);
+                setExam($student_reg_number, $grade_title, $grade_total, $student_score, $_SESSION['active_course_id'], $_SESSION['active_course_credits'], $_SESSION['active_course_set_year'], $grade_comment);
             } else {
-                addIncourse($student_reg_number, $grade_title, $grade_total, $student_score, $_SESSION['active_course_id'], $_SESSION['active_course_credits'], $_SESSION['active_course_set_year']);
+                addIncourse($student_reg_number, $grade_title, $grade_total, $student_score, $_SESSION['active_course_id'], $_SESSION['active_course_credits'], $_SESSION['active_course_set_year'], $grade_comment);
             }
 
             if (updateCourseSessionResult($_SESSION['active_course_table_id'], $_SESSION['active_course_grades'])) {

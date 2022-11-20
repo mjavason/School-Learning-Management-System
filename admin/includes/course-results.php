@@ -30,15 +30,21 @@
                              <th>Project</th>
                              <th>Practicals</th>
                              <th>Exams</th>
+                             <th>Score</th>
+                             <th>Grade</th>
                          </tr>
                      </thead>
                      <tbody>
                          <?php
-                            foreach ($results as $result) { ?>
+                            foreach ($results as $result) {
+                                $incourse = 0;
+                                $examScore = 0;
+                            ?>
                              <tr>
                                  <td class="text-left"><?= getStudentName($result['reg_num']) ?> (<?= $result['reg_num'] ?>)</td>
                                  <?php
                                     if (isset($result['incourse'])) {
+                                        $incourse = compileIncourse($result['incourse']);
                                     ?>
                                      <!-- Quiz -->
                                      <?php loadIncourseResults($result['incourse'], 'Quiz'); ?>
@@ -58,6 +64,7 @@
                                      <?php loadIncourseResults($result['incourse'], 'Practicals'); ?>
 
                                  <?php  } else {
+                                        $incourse = 0;
                                         echo ('<td class="text-success"><i class="fas fa-times text-danger"></i></td>');
                                         echo ('<td class="text-success"><i class="fas fa-times text-danger"></i></td>');
                                         echo ('<td class="text-success"><i class="fas fa-times text-danger"></i></td>');
@@ -66,19 +73,35 @@
                                     } ?>
 
                                  <?php if (isset($result['exam'])) {
+                                        $examScore = compileExam($result['exam']);
                                         $exam = $result['exam'][0];
                                     ?>
                                      <?php if ($exam['title'] == "Exam") { ?>
                                          <td class="text-success"><?= $exam['score'] ?></td>
                                      <?php } else {
+                                            $examScore = 0;
                                             echo ('<td class="text-success"><i class="fas fa-times text-danger"></i></td>');
                                         } ?>
                                  <?php
-                                    } else { ?>
+                                    } else {
+                                        $examScore = 0; ?>
                                      <td class="text-success"><i class="fas fa-times text-danger"></i></td>
+                                 <?php } ?>
+                                 <!-- Total Score///// -->
+                                 <td class=""><?= ($incourse + $examScore) ?></td>
+
+                                 <!-- Grade/////// -->
+                                 <?php
+                                    $grade = returnGrade($incourse + $examScore);
+                                    if ($grade == 'F') { ?>
+                                     <td class="text-danger"><?= $grade ?></td>
+                                 <?php } elseif ($grade == 'X') { ?>
+                                     <td class="text-success"><i class="fas fa-times text-danger"></i></td>
+                                 <?php } else { ?>
+                                     <td class="text-success"><?= $grade ?></td>
+                                 <?php } ?>
                              </tr>
-                     <?php }
-                                } ?>
+                         <?php  } ?>
                      </tbody>
                      <?php ?>
                  </table>
