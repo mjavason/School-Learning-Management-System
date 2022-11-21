@@ -42,6 +42,9 @@
                     <li class="nav-item">
                         <a href="active-practical-courses" class="nav-link"><i class="fas fa-angle-right"></i>Active Practical Courses</a>
                     </li>
+                    <!-- <li class="nav-item">
+                        <a href="course-materials" class="nav-link"><i class="fas fa-angle-right"></i>Materials</a>
+                    </li> -->
                 </ul>
             </li>
 
@@ -68,6 +71,26 @@
                 </li>
             <?php } ?>
 
+            <?php if (isset($_SESSION['active_course_id'])) { ?>
+                <li class="nav-item sidebar-nav-item">
+                    <a href="#" class="nav-link"><i class="flaticon-shopping-list"></i><span>Materials</span></a>
+                    <ul class="nav sub-group-menu">
+                        <li class="nav-item">
+                            <a href="course-materials" class="nav-link"><i class="fas fa-angle-right"></i>View Course Materials</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="new-course-material" class="nav-link"><i class="fas fa-angle-right"></i>Add New</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a href="course-grades" class="nav-link"><i class="fas fa-angle-right"></i>View
+                                Results</a>
+                        </li> -->
+
+                    </ul>
+                </li>
+            <?php } ?>
+
+
 
 
 
@@ -75,7 +98,7 @@
             <li class="nav-item">
                 <a href="edit-profile" class="nav-link"><i class="flaticon-settings"></i><span>Account Settings</span></a>
             </li>
-            
+
             <li class="nav-item">
                 <a href="test.php" class="nav-link"><i class="flaticon-script"></i><span>Test PHP Page</span></a>
             </li>

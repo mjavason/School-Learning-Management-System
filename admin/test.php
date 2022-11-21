@@ -72,7 +72,7 @@ echo '<pre>';
 // unset($_SESSION['active_course_grades'][0]['incourse']);
 // echo('Deleted<br>');
 
-print_r($_SESSION['active_course_grades']);
+// print_r($_SESSION['active_course_grades']);
 
 // print_r(json_encode($_SESSION));
 
@@ -127,3 +127,11 @@ print_r($_SESSION['active_course_grades']);
 // $testResult[0]['exam'][0] = $incourseArrayItem;
 
 // print_r(json_encode($testResult));
+
+echo ($_SESSION['active_course_id']);
+echo '<br>';
+echo ($_SESSION['active_course_table_id']);
+echo '<br>';
+echo ($_SESSION['active_course_department_id']);
+
+print_r(getCourseMaterials($_SESSION['active_course_id'], $_SESSION['active_course_table_id'], $_SESSION['active_course_department_id']));

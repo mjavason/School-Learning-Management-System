@@ -464,10 +464,10 @@ function getCoursesHandledByLecturer($id)
     $coursesTaken = json_decode($result[0]['course_handling'], true);
     sort($coursesTaken);
 
-    createLog('Success', 'getCoursesHandledByLecturer');
+    //createLog('Success', 'getCoursesHandledByLecturer');
     return $coursesTaken;
   } else {
-    createLog('Failed', 'getCoursesHandledByLecturer');
+    //createLog('Failed', 'getCoursesHandledByLecturer');
     return false;
   }
 }
@@ -478,10 +478,10 @@ function getCourseInfo($id)
 
   $result = $db_handle->selectAllWhere('courses', 'id', $id);
   if (isset($result)) {
-    createLog('Success', 'getCourseInfo');
+    //createLog('Success', 'getCourseInfo');
     return $result[0];
   } else {
-    createLog('Failed', 'getCourseInfo');
+    //createLog('Failed', 'getCourseInfo');
     return false;
   }
 }
@@ -492,10 +492,10 @@ function getDepartmentInfo($id)
 
   $result = $db_handle->selectAllWhere('departments', 'id', $id);
   if (isset($result)) {
-    createLog('Success', 'getDepartmentInfo');
+    //createLog('Success', 'getDepartmentInfo');
     return $result[0];
   } else {
-    createLog('Failed', 'getDepartmentInfo');
+    //createLog('Failed', 'getDepartmentInfo');
     return false;
   }
 }
@@ -507,10 +507,10 @@ function getActiveCoursesPerLecturer($id)
   $result = $db_handle->selectAllWhere_inactive('results', 'lecturer_id', $id);
 
   if (isset($result)) {
-    createLog('Success', 'getActivecoursesPerLecturer');
+    //createLog('Success', 'getActivecoursesPerLecturer');
     return $result;
   } else {
-    createLog('Failed', 'getActivecoursesPerLecturer');
+    //createLog('Failed', 'getActivecoursesPerLecturer');
     return false;
   }
 }
@@ -522,10 +522,10 @@ function getinactiveCoursesPerLecturer($id)
   $result = $db_handle->selectAllWhere_active('results', 'lecturer_id', $id);
 
   if (isset($result)) {
-    createLog('Success', 'getActivecoursesPerLecturer');
+    //createLog('Success', 'getActivecoursesPerLecturer');
     return $result;
   } else {
-    createLog('Failed', 'getActivecoursesPerLecturer');
+    //createLog('Failed', 'getActivecoursesPerLecturer');
     return false;
   }
 }
@@ -537,10 +537,10 @@ function getActivePracticalCoursesPerLecturer($id)
   $result = $db_handle->selectAllWhereWith2Conditions('results', 'practical_lecturer_id', $id, 'has_practical', 1);
 
   if (isset($result)) {
-    createLog('Success', 'getActivePracticalCoursesPerLecturer');
+    //createLog('Success', 'getActivePracticalCoursesPerLecturer');
     return $result;
   } else {
-    createLog('Failed', 'getActivePracticalCoursesPerLecturer');
+    //createLog('Failed', 'getActivePracticalCoursesPerLecturer');
     return false;
   }
 }
@@ -570,10 +570,10 @@ function createNewCourseSession($lecturerId, $courseId, $courseCredits, $student
     '$hasPractical',
     '$practicalLecturerId');";
   if ($db_handle->runQueryWithoutResponse($query)) {
-    createLog('Success', 'createNewCourseSession');
+    //createLog('Success', 'createNewCourseSession');
     return true;
   } else {
-    createLog('Failed', 'createNewCourseSession');
+    //createLog('Failed', 'createNewCourseSession');
     return false;
   }
 }
@@ -588,17 +588,17 @@ function getLecturerId($lecturerName)
   foreach ($fullName as $name) {
     $result = $db_handle->selectAllWhere('lecturers', 'first_name', $name);
     if (isset($result)) {
-      createLog('Success', 'getLecturerId');
+      //createLog('Success', 'getLecturerId');
       return $result[0]['id'];
     } else {
       $result2 = $db_handle->selectAllWhere('lecturers', 'last_name', $name);
       if (isset($result2)) {
-        createLog('Success on new try', 'getLecturerId');
+        //createLog('Success on new try', 'getLecturerId');
         return $result2[0]['id'];
       }
     }
   }
-  createLog('Failed', 'getLecturerId');
+  //createLog('Failed', 'getLecturerId');
   return false;
 }
 
@@ -608,7 +608,7 @@ function checkForDuplicateWithTwoColumns($tableName, $col1, $val1, $col2, $val2)
   //$response = [];
   $result = $db_handle->selectAllWhereWith2Conditions($tableName, $col1, $val1, $col2, $val2);
 
-  createLog('Ambigous', 'checkForDuplicateWithTwoColumns');
+  //createLog('Ambigous', 'checkForDuplicateWithTwoColumns');
   return isset($result) && count($result) > 0;
 }
 
@@ -618,7 +618,7 @@ function checkForDuplicate($tableName, $col1, $val1)
   //$response = [];
   $result = $db_handle->selectAllWhere($tableName, $col1, $val1);
 
-  createLog('Ambigous', 'checkForDuplicate');
+  //createLog('Ambigous', 'checkForDuplicate');
   return isset($result) && count($result) > 0;
 }
 
@@ -628,10 +628,10 @@ function getLecturerName($id)
 
   $result = $db_handle->selectAllWhere('lecturers', 'id', $id);
   if (isset($result)) {
-    createLog('Success', 'getLecturerName');
+    //createLog('Success', 'getLecturerName');
     return $result[0]['first_name'] . ' ' . $result[0]['last_name'];
   } else {
-    createLog('Failed', 'getLecturerName');
+    //createLog('Failed', 'getLecturerName');
     return false;
   }
 }
@@ -642,10 +642,10 @@ function getAllLecturerInfo($id)
 
   $result = $db_handle->selectAllWhere('lecturers', 'id', $id);
   if (isset($result)) {
-    // createLog('Success', 'getLecturerName');
+    // //createLog('Success', 'getLecturerName');
     return $result[0];
   } else {
-    // createLog('Failed', 'getLecturerName');
+    // //createLog('Failed', 'getLecturerName');
     return false;
   }
 }
@@ -669,10 +669,10 @@ function updateCourseSession($resultId, $lecturerId, $courseId, $courseCredits, 
    WHERE `results`.`id` = $resultId";
 
   if ($db_handle->runQueryWithoutResponse($query)) {
-    createLog('Success', 'updateCourseSession');
+    //createLog('Success', 'updateCourseSession');
     return true;
   } else {
-    createLog('Failed', 'updateCourseSession');
+    //createLog('Failed', 'updateCourseSession');
     return false;
   }
 }
@@ -686,10 +686,10 @@ function updateCourseSessionResult($resultId, $results)
   WHERE `results`.`id` = $resultId";
 
   if ($db_handle->runQueryWithoutResponse($query)) {
-    createLog('Success', 'updateCourseSessionResults');
+    //createLog('Success', 'updateCourseSessionResults');
     return true;
   } else {
-    createLog('Failed', 'updateCourseSessionResults');
+    //createLog('Failed', 'updateCourseSessionResults');
     return false;
   }
 }
@@ -702,7 +702,7 @@ function calculateStudentLevel($set)
   if (isset($set[0])) {
     $level = ($year - $set[0]);
   }
-  createLog('Success', 'calculateStudentLevel');
+  //createLog('Success', 'calculateStudentLevel');
   if ($level < 1) {
     return 1;
   }
@@ -724,7 +724,7 @@ function loadSessions()
     // <option value="2022/2023">2022/2023</option>
     $limit--;
   }
-  createLog('Success', 'loadSessions');
+  //createLog('Success', 'loadSessions');
 }
 
 function loadStudentsForParticularCourseSession($session)
@@ -738,10 +738,10 @@ function loadStudentsForParticularCourseSession($session)
     foreach ($result as $student) {
       echo '<option value="' . ($student['reg_no']) . '">' . ($student['first_name']) . ' ' . ($student['last_name']) . ' | ' . ($student['reg_no']) . '</option>';
     }
-    createLog('Success', 'loadStudentsForParticularCourseSession');
+    //createLog('Success', 'loadStudentsForParticularCourseSession');
     return true;
   } else {
-    createLog('Failed', 'loadStudentsForParticularCourseSession');
+    //createLog('Failed', 'loadStudentsForParticularCourseSession');
     return false;
   }
 }
@@ -763,7 +763,7 @@ function activateCourse($courseId, $tableId, $level, $setYear, $credits)
       $_SESSION['active_course_grades'] = [];
     }
   }
-  createLog('Success', 'activateCourse');
+  //createLog('Success', 'activateCourse');
 }
 
 function deactivateCourse($courseId)
@@ -780,7 +780,7 @@ function deactivateCourse($courseId)
     unset($_SESSION['active_course_set_year']);
     unset($_SESSION['active_course_grades']);
   }
-  createLog('Success', 'deactivateCourse');
+  //createLog('Success', 'deactivateCourse');
 }
 
 function getResults($resultId)
@@ -790,10 +790,10 @@ function getResults($resultId)
   $result = $db_handle->selectAllWhere('results', 'id', $resultId);
   if (isset($result)) {
     $resultsJson = $result[0]['results'];
-    createLog('Success', 'getResults');
+    //createLog('Success', 'getResults');
     return json_decode($resultsJson, true);
   } else {
-    createLog('Failed', 'getResults');
+    //createLog('Failed', 'getResults');
     return false;
   }
 }
@@ -835,11 +835,11 @@ function returnCompiledResult($resultId, $regNum)
       $exam = 70 * ((($incourseTotal / $incourseAbsoluteTotal) * 100) / 100);
       //echo ceil($exam);
 
-      createLog('Successful', 'returnCompiledResult');
+      //createLog('Successful', 'returnCompiledResult');
       return (array("incourse" => ceil($incourse), "exam" => ceil($exam)));
     }
   }
-  createLog('Failed', 'returnCompiledResult');
+  //createLog('Failed', 'returnCompiledResult');
   return false;
 }
 
@@ -867,10 +867,10 @@ function getStudentName($regNum)
   $result = $db_handle->selectAllWhere('students', 'reg_no', $regNum);
 
   if (isset($result)) {
-    createLog('Success', 'getStudentName');
+    //createLog('Success', 'getStudentName');
     return ($result[0]['first_name'] . ' ' . $result[0]['last_name']);
   } else {
-    createLog('Failed', 'getStudentName');
+    //createLog('Failed', 'getStudentName');
     return false;
   }
 }
@@ -982,10 +982,10 @@ function deactivateCourseSession($resultId)
   WHERE `results`.`id` = $resultId";
 
   if ($db_handle->runQueryWithoutResponse($query)) {
-    createLog('Success', 'deactivateCourseSessionResults');
+    //createLog('Success', 'deactivateCourseSessionResults');
     return true;
   } else {
-    createLog('Failed', 'deactivateCourseSessionResults');
+    //createLog('Failed', 'deactivateCourseSessionResults');
     return false;
   }
 }
@@ -1001,7 +1001,7 @@ function updateStudentCourseTaken($studentRegNum, $courseId, $courseCredits, $co
       if (isset($courses['course_id'])) {
         if ($courses['course_id'] == $courseId && $courses['course_set'] == $courseSet && $courses['course_credits'] == $courseCredits) {
           $courseExists = true;
-          createLog('Success', 'updateStudentCourseTaken');
+          //createLog('Success', 'updateStudentCourseTaken');
           return true;
         }
       }
@@ -1017,10 +1017,10 @@ function updateStudentCourseTaken($studentRegNum, $courseId, $courseCredits, $co
   WHERE `students`.`reg_no` = $studentRegNum";
 
     if ($db_handle->runQueryWithoutResponse($query)) {
-      createLog('Success', 'updateStudentCourseTaken');
+      //createLog('Success', 'updateStudentCourseTaken');
       return true;
     } else {
-      createLog('Failed', 'updateStudentCourseTaken');
+      //createLog('Failed', 'updateStudentCourseTaken');
       return false;
     }
   }
@@ -1065,10 +1065,10 @@ function updateLecturerProfile($lecturerId, $firstName, $lastName, $gender, $ema
     $_SESSION['lecturer_gender'] = $gender;
     $_SESSION['lecturer_department'] = $departmentId;
     $_SESSION['staff_id_number'] = $staffIdNumber;
-    // createLog('Success', 'updateCourseSession');
+    // //createLog('Success', 'updateCourseSession');
     return true;
   } else {
-    // createLog('Failed', 'updateCourseSession');
+    // //createLog('Failed', 'updateCourseSession');
     return false;
   }
 }
@@ -1080,16 +1080,19 @@ function getDepartmentName($id)
   $result = $db_handle->selectAllWhere('departments', 'id', $id);
 
   if (isset($result)) {
-    // createLog('Success', 'getStudentName');
+    // //createLog('Success', 'getStudentName');
     return ($result[0]['department_name']);
   } else {
-    // createLog('Failed', 'getStudentName');
+    // //createLog('Failed', 'getStudentName');
     return false;
   }
 }
 
-function formatDateFriendlier($date)
+function formatDateFriendlier($date, $format = null)
 {
+  if (isset($format)) {
+    return date($format, strtotime($date));
+  }
   return date('d', strtotime($date)) . '-' . date('M', strtotime($date)) . '-' . date('Y', strtotime($date));
 }
 
@@ -1102,10 +1105,10 @@ function updateLecturerPassword($lecturerId, $newPassword)
    WHERE `lecturers`.`id` = $lecturerId";
 
   if ($db_handle->runQueryWithoutResponse($query)) {
-    // createLog('Success', 'updateCourseSession');
+    // //createLog('Success', 'updateCourseSession');
     return true;
   } else {
-    // createLog('Failed', 'updateCourseSession');
+    // //createLog('Failed', 'updateCourseSession');
     return false;
   }
 }
@@ -1141,5 +1144,106 @@ function compileExam($examArray)
   return ceil(70 * ((($scoretotal / $absoluteTotal) * 100) / 100));
 }
 
+function createNewCourseMaterial($title, $description, $link, $writer, $category, $lecturerId, $courseId, $courseSessionId)
+{
+  global $db_handle;
+
+  $title = sanitize($title, 'clean');
+  $description = sanitize($description, 'none');
+  $link = sanitize($link, 'none');
+  $writer = sanitize($writer, 'none');
+  $category = sanitize($category, 'none');
+
+  $query = "INSERT INTO `course_materials` (
+    `link`,
+    `title`,
+    `description`,
+    `category`,    
+    `lecturer_id`,
+    `course_id`,
+    `result_id`,
+    `writer`
+         ) VALUES (
+          '$link', 
+          '$title', 
+          '$description', 
+          '$category',
+          $lecturerId, 
+          $courseId, 
+          
+          $courseSessionId, 
+    '$writer'
+         )";
+  return $db_handle->runQueryWithoutResponse($query);
+}
+
+function updateCourseMaterial($title, $description, $link, $writer, $category, $lecturerId, $courseId, $courseSessionId, $materialId)
+{
+  global $db_handle;
+
+  $title = sanitize($title, 'clean');
+  $description = sanitize($description, 'none');
+  $link = sanitize($link, 'none');
+  $writer = sanitize($writer, 'none');
+  $category = sanitize($category, 'none');
+
+  $query = "UPDATE `course_materials` SET
+    `link`=  '$link', 
+    `title` =  '$title',
+    `description` = '$description',
+    `category` =   '$category',    
+    `lecturer_id` =    $lecturerId,
+    `course_id` =    $courseId,
+    `result_id`=     $courseSessionId, 
+    `writer` =  '$writer'
+      WHERE `course_materials`.`id` = $materialId";
+
+  return $db_handle->runQueryWithoutResponse($query);
+}
+
+function getCourseMaterials($courseId, $resultId)
+{
+  global $db_handle;
+  //$response = [];
+  $result = $db_handle->selectAllWhereWith2Conditions('course_materials', 'course_id', $courseId, 'result_id', $resultId);
+
+  if (isset($result)) {
+    // //createLog('Success', 'getStudentName');
+    return ($result);
+  } else {
+    // //createLog('Failed', 'getStudentName');
+    return false;
+  }
+}
+
+function deleteMaterial($id)
+{
+  global $db_handle;
+  //$response = [];
+  $result = $db_handle->deleteSingleColumnWhere1Condition('course_materials', 'id', $id);
+
+  if (isset($result)) {
+    // //createLog('Success', 'getStudentName');
+    return ($result);
+  } else {
+    // //createLog('Failed', 'getStudentName');
+    return false;
+  }
+}
+
+function getMaterialInfo($id)
+{
+  global $db_handle;
+  //$response = [];
+  $result = $db_handle->selectAllWhere('course_materials', 'id', $id);
+
+  if (isset($result)) {
+    // //createLog('Success', 'getStudentName');
+    return ($result[0]);
+  } else {
+    // //createLog('Failed', 'getStudentName');
+    return false;
+  }
+}
 // 
 #endregion
