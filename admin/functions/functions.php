@@ -1245,5 +1245,14 @@ function getMaterialInfo($id)
     return false;
   }
 }
+
+function displayGenericProfileImage($gender)
+{
+  if ($gender == 'Male') {
+    return 'user.jpg';
+  } else {
+    return 'student1.jpg';
+  }
+}
 // 
 #endregion

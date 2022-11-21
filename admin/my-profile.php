@@ -63,7 +63,7 @@ if (!isset($_SESSION['super_log'])) {
                                 </div>
                                 <div class="user-details-box">
                                     <div class="item-img">
-                                        <img src="img/figure/user.jpg" alt="user">
+                                        <img src="img/figure/<?= displayGenericProfileImage($_SESSION['lecturer_gender']) ?>" alt="user">
                                     </div>
                                     <div class="item-content">
                                         <div class="info-table table-responsive">
