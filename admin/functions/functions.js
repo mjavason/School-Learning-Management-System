@@ -1369,6 +1369,7 @@ function toggleFullMessageWindow(url) {
 
         })
 }
+
 // function dollarFormat(number) {
 //     //window.alert('This naira format function is working');
 //     console.log('inside dollarFormat function');

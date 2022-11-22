@@ -12,6 +12,7 @@ if (!isset($_GET['announcement_id'])) {
             $announcementInfo = getAnnouncementInfo($announcement_id);
             if ($announcementInfo) {
                 echo html_entity_decode($announcementInfo['description']);
+                // echo $announcementInfo['description'];
             } else {
                 echo 'error';
                 //print json_encode([['error' => 'DB Error Occured']]);

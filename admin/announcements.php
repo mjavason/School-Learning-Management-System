@@ -63,7 +63,7 @@ if (isset($_GET['result_id']) && isset($_GET['course_id']) && isset($_GET['semes
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="new-announcement"><i class="fas fa-plus text-primary"></i>New</a>
                                             <!-- <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a> -->
-                                            <a class="dropdown-item" href="course-announcements"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                                            <a class="dropdown-item" href="announcements"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
                                         </div>
                                     </div>
                                 </div>

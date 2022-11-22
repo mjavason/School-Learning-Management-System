@@ -128,10 +128,19 @@ echo '<pre>';
 
 // print_r(json_encode($testResult));
 
-echo ($_SESSION['active_course_id']);
-echo '<br>';
-echo ($_SESSION['active_course_table_id']);
-echo '<br>';
-echo ($_SESSION['active_course_department_id']);
+// echo ($_SESSION['active_course_id']);
+// echo '<br>';
+// echo ($_SESSION['active_course_table_id']);
+// echo '<br>';
+// echo ($_SESSION['active_course_department_id']);
 
-print_r(getCourseMaterials($_SESSION['active_course_id'], $_SESSION['active_course_table_id'], $_SESSION['active_course_department_id']));
+// print_r(getCourseMaterials($_SESSION['active_course_id'], $_SESSION['active_course_table_id'], $_SESSION['active_course_department_id']));
+
+
+$announcementInfo = getAnnouncementInfo(4);
+if ($announcementInfo) {
+    echo html_entity_decode($announcementInfo['description']);
+} else {
+    echo 'error';
+    //print json_encode([['error' => 'DB Error Occured']]);
+}

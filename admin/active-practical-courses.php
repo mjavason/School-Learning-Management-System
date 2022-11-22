@@ -114,8 +114,8 @@ if (!isset($_SESSION['super_log'])) {
                                                                             <span class="flaticon-more-button-of-three-dots"></span>
                                                                         </a>
                                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                                            <a class="dropdown-item" href="grade"><i class="fas fa-plus text-primary"></i>Add Incourse Grades</a>
-                                                                            <a class="dropdown-item" href="course-grades"><i class="fas fa-calendar text-dark-pastel-green"></i>View Grades</a>
+                                                                        <a class="dropdown-item" href="grade?result_id=<?= $course['id'] ?>&course_id=<?= $course['course_id'] ?>&semester=<?= $course['semester'] ?>&course_credits=<?= $course['course_credits'] ?>&set=<?= $course['set_year'] ?>&practical_lecturer_name=<?= getLecturerName($course['practical_lecturer_id']) ?>"><i class="fas fa-plus text-primary"></i>Incourse</a>
+                                                                        <a class="dropdown-item" href="course-grades?result_id=<?= $course['id'] ?>&course_id=<?= $course['course_id'] ?>&semester=<?= $course['semester'] ?>&course_credits=<?= $course['course_credits'] ?>&set=<?= $course['set_year'] ?>&practical_lecturer_name=<?= getLecturerName($course['practical_lecturer_id']) ?>"><i class="fas fa-clipboard-check text-dark-pastel-green"></i>Grades</a>
                                                                             <?php
                                                                             if (isset($_SESSION['active_course_id'])) {
                                                                                 if ($_SESSION['active_course_id'] == $course['course_id'] && $_SESSION['active_course_table_id'] == $course['id']) { ?>
