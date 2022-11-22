@@ -1320,6 +1320,57 @@ function sendCourseAnnouncement(url, dataRequest) {
 
         })
 }
+
+function toggleFullMessage(url, title) {
+    dataRequest = '';
+    $.post(url,   // url
+        function (data, status, jqXHR) {// success callback
+            console.log(data);
+            if(data != 'error'){
+            swal(data, {
+                title: title,
+                icon: "info"
+            });
+
+        }else{
+            swal("Unknown error occured", {
+                title: 'Error',
+                icon: "error"
+            });
+        }
+            //dataParsed[0].success
+
+            //text: dataParsed[0].error
+
+
+        })
+}
+
+//This is a toggle window function. It will be very helpful in the future
+function toggleFullMessageWindow(url) {
+    dataRequest = '';
+    $.post(url,   // url
+        function (data, status, jqXHR) {// success callback
+            console.log(data);
+
+
+            var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
+            var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
+
+            var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+            var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+            var left = ((width / 2) - (width / 2)) + dualScreenLeft;
+            var top = ((height / 2) - (height / 2)) + dualScreenTop;
+
+            window.open("http://www.w3schools.com", "", "width=200,height=100, top=" + top + ", left=" + left);
+            //dataParsed[0].success
+
+            //text: dataParsed[0].error
+
+
+        })
+}
 // function dollarFormat(number) {
 //     //window.alert('This naira format function is working');
 //     console.log('inside dollarFormat function');

@@ -1281,7 +1281,7 @@ function getAnnouncementInfo($id)
 {
   global $db_handle;
   //$response = [];
-  $result = $db_handle->selectAllWhere('course_materials', 'id', $id);
+  $result = $db_handle->selectAllWhere('announcements', 'id', $id);
 
   if (isset($result)) {
     // //createLog('Success', 'getStudentName');

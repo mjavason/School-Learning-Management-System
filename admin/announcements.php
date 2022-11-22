@@ -95,7 +95,7 @@ if (isset($_GET['result_id']) && isset($_GET['course_id']) && isset($_GET['semes
                                                     <tr>
                                                         <td>#<?= $announcement['id'] ?></td>
                                                         <td><?= htmlentities($announcement['title']) ?></td>
-                                                        <td><?= substr(htmlentities($announcement['description']), 0, 25) ?>...</td>
+                                                        <td onclick="toggleFullMessage('functions/toggleFullMessage?announcement_id=<?= $announcement['id'] ?>', '<?= $announcement['title'] ?>')"><?= substr(htmlentities($announcement['description']), 0, 25) ?>...</td>
                                                         <td><?= $_SESSION['active_course_name'] ?></td>
                                                         <td><?= htmlentities($announcement['category']) ?></td>
                                                         <td><?= countViewsPerAnnouncement($announcement['viewers']) ?></td>
