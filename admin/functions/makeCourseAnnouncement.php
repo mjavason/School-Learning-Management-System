@@ -14,7 +14,7 @@ if (!isset($_POST)) {
 
 
             if (createNewCourseAnnouncement($announcement_title, $announcement_description, $announcement_category, $_SESSION['lecturer_id'], $_SESSION['active_course_id'],  $_SESSION['active_course_table_id'])) {
-                print json_encode([['success' => 'Course Announcement Created!']]);
+                print json_encode([['success' => 'Course Announcement Sent!']]);
             } else {
                 print json_encode([['error' => 'Database Error!']]);
             }
