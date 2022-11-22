@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2022 at 08:33 AM
+-- Generation Time: Nov 22, 2022 at 08:42 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -2595,7 +2595,10 @@ INSERT INTO `super_admins` (`id`, `first_name`, `last_name`, `email`, `phone`, `
 -- Indexes for table `announcements`
 --
 ALTER TABLE `announcements`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `lecturer_id` (`lecturer_id`),
+  ADD KEY `result_id` (`result_id`),
+  ADD KEY `course_id` (`course_id`);
 
 --
 -- Indexes for table `courses`
@@ -2726,6 +2729,14 @@ ALTER TABLE `super_admins`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `announcements`
+--
+ALTER TABLE `announcements`
+  ADD CONSTRAINT `announcements_ibfk_1` FOREIGN KEY (`lecturer_id`) REFERENCES `lecturers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `announcements_ibfk_2` FOREIGN KEY (`result_id`) REFERENCES `results` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `announcements_ibfk_3` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `courses`
