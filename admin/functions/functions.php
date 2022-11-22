@@ -1216,6 +1216,21 @@ function getCourseMaterials($courseId, $resultId)
   }
 }
 
+function getCourseAnnouncements($lecturerId, $courseId, $resultId)
+{
+  global $db_handle;
+  //$response = [];
+  $result = $db_handle->selectAllWhereWith3Conditions('announcements', 'lecturer_id', $lecturerId, 'course_id', $courseId, 'result_id', $resultId);
+
+  if (isset($result)) {
+    // //createLog('Success', 'getStudentName');
+    return ($result);
+  } else {
+    // //createLog('Failed', 'getStudentName');
+    return false;
+  }
+}
+
 function deleteMaterial($id)
 {
   global $db_handle;
@@ -1231,7 +1246,38 @@ function deleteMaterial($id)
   }
 }
 
+function deleteAnnouncement($id)
+{
+  global $db_handle;
+  //$response = [];
+  $result = $db_handle->deleteSingleColumnWhere1Condition('announcements', 'id', $id);
+
+  if (isset($result)) {
+    // //createLog('Success', 'getStudentName');
+    return ($result);
+  } else {
+    // //createLog('Failed', 'getStudentName');
+    return false;
+  }
+}
+
+
 function getMaterialInfo($id)
+{
+  global $db_handle;
+  //$response = [];
+  $result = $db_handle->selectAllWhere('course_materials', 'id', $id);
+
+  if (isset($result)) {
+    // //createLog('Success', 'getStudentName');
+    return ($result[0]);
+  } else {
+    // //createLog('Failed', 'getStudentName');
+    return false;
+  }
+}
+
+function getAnnouncementInfo($id)
 {
   global $db_handle;
   //$response = [];
@@ -1254,5 +1300,43 @@ function displayGenericProfileImage($gender)
     return 'student1.jpg';
   }
 }
+
+function createNewCourseAnnouncement($title, $description, $category, $lecturerId, $courseId, $courseSessionId)
+{
+  global $db_handle;
+
+  $title = sanitize($title, 'clean');
+  $description = sanitize($description, 'none');
+  $category = sanitize($category, 'none');
+
+  $query = "INSERT INTO `announcements` (
+    `title`,
+    `description`,
+    `category`,    
+    `lecturer_id`,
+    `course_id`,
+    `result_id`
+         ) VALUES (
+          '$title', 
+          '$description', 
+          '$category',
+          $lecturerId, 
+          $courseId, 
+          $courseSessionId
+                   )";
+  return $db_handle->runQueryWithoutResponse($query);
+}
+
+function countViewsPerAnnouncement($viewJson){
+  $decoded = json_decode($viewJson, true);
+  if(!empty($decoded)){
+    return count($decoded);
+  }else{
+    return 0;
+  }
+
+}
+
+
 // 
 #endregion

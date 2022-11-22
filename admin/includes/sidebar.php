@@ -90,6 +90,25 @@
                 </li>
             <?php } ?>
 
+            <?php if (isset($_SESSION['active_course_id'])) { ?>
+                <li class="nav-item sidebar-nav-item">
+                    <a href="#" class="nav-link"><i class="flaticon-shopping-list"></i><span>Announcements</span></a>
+                    <ul class="nav sub-group-menu">
+                        <li class="nav-item">
+                            <a href="announcements" class="nav-link"><i class="fas fa-angle-right"></i>View Announcements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="new-announcement" class="nav-link"><i class="fas fa-angle-right"></i>Make Announcement</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a href="course-grades" class="nav-link"><i class="fas fa-angle-right"></i>View
+                                Results</a>
+                        </li> -->
+
+                    </ul>
+                </li>
+            <?php } ?>
+
 
 
 

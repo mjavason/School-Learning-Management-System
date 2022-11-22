@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2022 at 01:22 PM
+-- Generation Time: Nov 22, 2022 at 08:33 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -20,6 +20,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `esut_gamma`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `announcements`
+--
+
+CREATE TABLE `announcements` (
+  `id` int(11) NOT NULL,
+  `title` varchar(500) NOT NULL,
+  `description` text NOT NULL,
+  `category` varchar(200) NOT NULL,
+  `lecturer_id` int(11) NOT NULL,
+  `result_id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `viewers` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '[]',
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `announcements`
+--
+
+INSERT INTO `announcements` (`id`, `title`, `description`, `category`, `lecturer_id`, `result_id`, `course_id`, `viewers`, `date_created`, `date_updated`, `deleted`) VALUES
+(1, 'Exam Well Wishes', 'We will be having lectures on Friday 9/12/22 by 10am. Do show up.', 'Class/Lecture', 1, 2081, 2, '[{\"id\":1},{\"id\":2},{\"id\":3},{\"id\":4},{\"id\":5},{\"id\":6},{\"id\":7}]', '2022-11-22 08:04:37', '2022-11-22 08:28:19', 0),
+(2, 'Lets Do This', 'Do chapter 5 of the Einstein textbook. To be submitted on monday', 'Assignment', 1, 2081, 2, '[]', '2022-11-22 08:29:36', '2022-11-22 08:29:36', 0);
 
 -- --------------------------------------------------------
 
@@ -141,7 +169,7 @@ CREATE TABLE `lecturers` (
 --
 
 INSERT INTO `lecturers` (`id`, `first_name`, `last_name`, `gender`, `email`, `phone`, `department_id`, `course_handling`, `password`, `title`, `staff_id_number`, `date_created`, `date_updated`, `deleted`) VALUES
-(1, 'Tester', 'Kahn', 'Male', 'testerzero@mail.com', '08148863871', 1, '[     {         \"course_id\": 1,         \"course_credits\": 1,         \"course_level\": 3,         \"year_taken\": 2019     },     {         \"course_id\": 5,         \"course_credits\": 2,         \"course_level\": 1,         \"year_taken\": 2019     },     {         \"course_id\": 6,         \"course_credits\": 1,         \"course_level\": 5,         \"year_taken\": 2018     },     {         \"course_id\": 9,         \"course_credits\": 1,         \"course_level\": 3,         \"year_taken\": 2022     },     {         \"course_id\": 4,         \"course_credits\": 2,         \"course_level\": 1,         \"year_taken\": 2020     },     {         \"course_id\": 2,         \"course_credits\": 1,         \"course_level\": 2,         \"year_taken\": 2021     },     {         \"course_id\": 3,         \"course_credits\": 2,         \"course_level\": 2,         \"year_taken\": 2021     },     {         \"course_id\": 8,         \"course_credits\": 2,         \"course_level\": 3,         \"year_taken\": 2019     },     {         \"course_id\": 7,         \"course_credits\": 1,         \"course_level\": 4,         \"year_taken\": 2018     } ]', '356a192b7913b04c54574d18c28d46e6395428ab', 'Shao kahn', '35434543543', '2022-10-17', '2022-11-18 15:19:45', 0),
+(1, 'Tester', 'Kahn', 'Male', 'testerzero@mail.com', '08148863871', 1, '[     {         \"course_id\": 1,         \"course_credits\": 1,         \"course_level\": 3,         \"year_taken\": 2019     },     {         \"course_id\": 5,         \"course_credits\": 2,         \"course_level\": 1,         \"year_taken\": 2019     },     {         \"course_id\": 6,         \"course_credits\": 1,         \"course_level\": 5,         \"year_taken\": 2018     },     {         \"course_id\": 9,         \"course_credits\": 1,         \"course_level\": 3,         \"year_taken\": 2022     },     {         \"course_id\": 4,         \"course_credits\": 2,         \"course_level\": 1,         \"year_taken\": 2020     },     {         \"course_id\": 2,         \"course_credits\": 1,         \"course_level\": 2,         \"year_taken\": 2021     },     {         \"course_id\": 3,         \"course_credits\": 2,         \"course_level\": 2,         \"year_taken\": 2021     },     {         \"course_id\": 8,         \"course_credits\": 2,         \"course_level\": 3,         \"year_taken\": 2019     },     {         \"course_id\": 7,         \"course_credits\": 1,         \"course_level\": 4,         \"year_taken\": 2018     } ]', '356a192b7913b04c54574d18c28d46e6395428ab', 'Shao kahn', '35434543543', '2022-10-17', '2022-11-21 15:19:58', 0),
 (752, 'Leola', 'Salzburger', 'Female', 'lsalzburgerkv@vinaora.com', '179-617-5687', 3, '[     {         \"course_id\": 1,         \"course_credits\": 1,         \"course_level\": 3,         \"year_taken\": 2019     },     {         \"course_id\": 5,         \"course_credits\": 2,         \"course_level\": 1,         \"year_taken\": 2019     },     {         \"course_id\": 6,         \"course_credits\": 1,         \"course_level\": 5,         \"year_taken\": 2018     },     {         \"course_id\": 9,         \"course_credits\": 1,         \"course_level\": 3,         \"year_taken\": 2022     },     {         \"course_id\": 4,         \"course_credits\": 2,         \"course_level\": 1,         \"year_taken\": 2020     },     {         \"course_id\": 2,         \"course_credits\": 1,         \"course_level\": 2,         \"year_taken\": 2021     },     {         \"course_id\": 3,         \"course_credits\": 2,         \"course_level\": 2,         \"year_taken\": 2021     },     {         \"course_id\": 8,         \"course_credits\": 2,         \"course_level\": 3,         \"year_taken\": 2019     },     {         \"course_id\": 7,         \"course_credits\": 1,         \"course_level\": 4,         \"year_taken\": 2018     } ]', 'BtBfeR7h', 'Operator', '-', '2022-10-17', '2022-10-29 12:04:41', 0),
 (753, 'Romy', 'Monte', 'Female', 'rmontekw@unicef.org', '271-335-3015', 7, '[     {         \"course_id\": 1,         \"course_credits\": 1,         \"course_level\": 3,         \"year_taken\": 2019     },     {         \"course_id\": 5,         \"course_credits\": 2,         \"course_level\": 1,         \"year_taken\": 2019     },     {         \"course_id\": 6,         \"course_credits\": 1,         \"course_level\": 5,         \"year_taken\": 2018     },     {         \"course_id\": 9,         \"course_credits\": 1,         \"course_level\": 3,         \"year_taken\": 2022     },     {         \"course_id\": 4,         \"course_credits\": 2,         \"course_level\": 1,         \"year_taken\": 2020     },     {         \"course_id\": 2,         \"course_credits\": 1,         \"course_level\": 2,         \"year_taken\": 2021     },     {         \"course_id\": 3,         \"course_credits\": 2,         \"course_level\": 2,         \"year_taken\": 2021     },     {         \"course_id\": 8,         \"course_credits\": 2,         \"course_level\": 3,         \"year_taken\": 2019     },     {         \"course_id\": 7,         \"course_credits\": 1,         \"course_level\": 4,         \"year_taken\": 2018     } ]', '3tul2UNrb', 'VP Sales', '-', '2022-10-17', '2022-10-29 12:04:45', 0),
 (754, 'Yalonda', 'Lorden', 'Female', 'ylordenkx@weebly.com', '697-840-0719', 1, '[     {         \"course_id\": 1,         \"course_credits\": 1,         \"course_level\": 3,         \"year_taken\": 2019     },     {         \"course_id\": 5,         \"course_credits\": 2,         \"course_level\": 1,         \"year_taken\": 2019     },     {         \"course_id\": 6,         \"course_credits\": 1,         \"course_level\": 5,         \"year_taken\": 2018     },     {         \"course_id\": 9,         \"course_credits\": 1,         \"course_level\": 3,         \"year_taken\": 2022     },     {         \"course_id\": 4,         \"course_credits\": 2,         \"course_level\": 1,         \"year_taken\": 2020     },     {         \"course_id\": 2,         \"course_credits\": 1,         \"course_level\": 2,         \"year_taken\": 2021     },     {         \"course_id\": 3,         \"course_credits\": 2,         \"course_level\": 2,         \"year_taken\": 2021     },     {         \"course_id\": 8,         \"course_credits\": 2,         \"course_level\": 3,         \"year_taken\": 2019     },     {         \"course_id\": 7,         \"course_credits\": 1,         \"course_level\": 4,         \"year_taken\": 2018     } ]', 'XGDo29PzuH7', 'Biostatistician II', '-', '2022-10-17', '2022-10-29 12:04:50', 0),
@@ -2564,6 +2592,12 @@ INSERT INTO `super_admins` (`id`, `first_name`, `last_name`, `email`, `phone`, `
 --
 
 --
+-- Indexes for table `announcements`
+--
+ALTER TABLE `announcements`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `courses`
 --
 ALTER TABLE `courses`
@@ -2634,6 +2668,12 @@ ALTER TABLE `super_admins`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `announcements`
+--
+ALTER TABLE `announcements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `courses`
