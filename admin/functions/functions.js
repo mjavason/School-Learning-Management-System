@@ -191,8 +191,6 @@ function createNewCourseSession(url, dataRequest) {
         })
 }
 
-
-
 function simpleAjaxGetRequest(url, dataRequest) {
     $.get(url, // url
         dataRequest,
@@ -1326,18 +1324,18 @@ function toggleFullMessage(url, title) {
     $.post(url,   // url
         function (data, status, jqXHR) {// success callback
             console.log(data);
-            if(data != 'error'){
-            swal(data, {
-                title: title,
-                icon: "info"
-            });
+            if (data != 'error') {
+                swal(data, {
+                    title: title,
+                    icon: "info"
+                });
 
-        }else{
-            swal("Unknown error occured", {
-                title: 'Error',
-                icon: "error"
-            });
-        }
+            } else {
+                swal("Unknown error occured", {
+                    title: 'Error',
+                    icon: "error"
+                });
+            }
             //dataParsed[0].success
 
             //text: dataParsed[0].error
