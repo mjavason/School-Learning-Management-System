@@ -11,7 +11,7 @@ if (!isset($_GET['announcement_id'])) {
         case (!empty($announcement_id)):
             $announcementInfo = getAnnouncementInfo($announcement_id);
             if ($announcementInfo) {
-                echo htmlentities($announcementInfo['description']);
+                echo html_entity_decode($announcementInfo['description']);
             } else {
                 echo 'error';
                 //print json_encode([['error' => 'DB Error Occured']]);

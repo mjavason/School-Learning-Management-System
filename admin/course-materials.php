@@ -94,10 +94,10 @@ if (isset($_GET['result_id']) && isset($_GET['course_id']) && isset($_GET['semes
                                             ?>
                                                     <tr>
                                                         <td>#<?= $material['id'] ?></td>
-                                                        <td><?= htmlentities($material['title']) ?></td>
-                                                        <td><a href="<?= htmlentities($material['link']) ?>"><?= substr(htmlentities($material['link']), 0, 12) ?>...</a></td>
+                                                        <td><?= html_entity_decode($material['title']) ?></td>
+                                                        <td><a href="<?= html_entity_decode($material['link']) ?>"><?= substr(html_entity_decode($material['link']), 0, 12) ?>...</a></td>
                                                         <td><?= $_SESSION['active_course_name'] ?></td>
-                                                        <td><?= htmlentities($material['writer']) ?></td>
+                                                        <td><?= html_entity_decode($material['writer']) ?></td>
                                                         <td><?= $material['category'] ?></td>
                                                         <td><?= formatDateFriendlier($material['date_updated']) ?></td>
                                                         <td>

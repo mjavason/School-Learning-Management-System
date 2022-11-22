@@ -73,21 +73,21 @@ if (isset($_GET['result_id']) && isset($_GET['course_id']) && isset($_GET['semes
                                     <div class="row">
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
                                             <label for="material_title">Material Title</label>
-                                            <input class="form-control" value="<?= htmlentities($material['title']) ?>" placeholder="Calculus & Coordinate Geometry" type="text" name="material_title" id="material_title">
+                                            <input class="form-control" value="<?= html_entity_decode($material['title']) ?>" placeholder="Calculus & Coordinate Geometry" type="text" name="material_title" id="material_title">
                                         </div>
 
 
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
                                             <label for="material_link">Material Link (Google Drive)</label>
-                                            <input value="<?= htmlentities($material['link']) ?>" placeholder="https://googledrive.com?file=e9839wrewx" class="form-control" type="text" name="material_link" id="material_link">
+                                            <input value="<?= html_entity_decode($material['link']) ?>" placeholder="https://googledrive.com?file=e9839wrewx" class="form-control" type="text" name="material_link" id="material_link">
                                         </div>
 
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
                                             <label for="material_writer">Material Writer</label>
-                                            <input value="<?= htmlentities($material['writer']) ?>" placeholder="Einstein" class="form-control" type="text" name="material_writer" id="material_writer">
+                                            <input value="<?= html_entity_decode($material['writer']) ?>" placeholder="Einstein" class="form-control" type="text" name="material_writer" id="material_writer">
                                         </div>
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
-                                            <label for="material_category">Material Category (<?= htmlentities($material['category']) ?>)</label>
+                                            <label for="material_category">Material Category (<?= html_entity_decode($material['category']) ?>)</label>
                                             <select id="material_category" class="select2">
                                                 <option value="">Please Select</option>
                                                 <option value="Lecture Note">Lecture Note</option>
@@ -99,7 +99,7 @@ if (isset($_GET['result_id']) && isset($_GET['course_id']) && isset($_GET['semes
                                         </div>
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
                                             <label for="material_description">Material Description</label>
-                                            <textarea placeholder="This is the offical material for Computer Engineers; ensure to read it; especially chapter 4 and 8" class="form-control" type="text" name="material_description" id="material_description"><?= htmlentities($material['description']) ?></textarea>
+                                            <textarea placeholder="This is the offical material for Computer Engineers; ensure to read it; especially chapter 4 and 8" class="form-control" type="text" name="material_description" id="material_description"><?= html_entity_decode($material['description']) ?></textarea>
                                         </div>
                                     </div>
                                     <div class="mt-3">
