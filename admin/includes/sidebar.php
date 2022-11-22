@@ -29,22 +29,20 @@
             <li class="nav-item sidebar-nav-item">
                 <a href="all-courses" class="nav-link"><i class="flaticon-open-book"></i><span>My Courses</span></a>
                 <ul class="nav sub-group-menu">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="all-courses" class="nav-link"><i class="fas fa-angle-right"></i>All
                             Courses</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a href="active-courses" class="nav-link"><i class="fas fa-angle-right"></i>Active Courses</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="inactive-courses" class="nav-link"><i class="fas fa-angle-right"></i>Closed Courses</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a href="active-practical-courses" class="nav-link"><i class="fas fa-angle-right"></i>Active Practical Courses</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a href="course-materials" class="nav-link"><i class="fas fa-angle-right"></i>Materials</a>
-                    </li> -->
+                 
                 </ul>
             </li>
 
