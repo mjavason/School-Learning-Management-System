@@ -82,28 +82,28 @@ if (isset($_SESSION['ultra_log'])) {
                                         </div>
                                         <div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; inset: 0px;">
                                             <div style="position: absolute; top: 295px; left: 8px; text-align: right;" class="flot-tick-label tickLabel">0</div>
-                                            <div style="position: absolute; top: 236px; left: 1px; text-align: right;" class="flot-tick-label tickLabel">10</div>
-                                            <div style="position: absolute; top: 177px; left: 1px; text-align: right;" class="flot-tick-label tickLabel">20</div>
-                                            <div style="position: absolute; top: 118px; left: 1px; text-align: right;" class="flot-tick-label tickLabel">30</div>
-                                            <div style="position: absolute; top: 59px; left: 1px; text-align: right;" class="flot-tick-label tickLabel">40</div>
-                                            <div style="position: absolute; top: 0px; left: 1px; text-align: right;" class="flot-tick-label tickLabel">50</div>
+                                            <div style="position: absolute; top: 236px; left: 1px; text-align: right;" class="flot-tick-label tickLabel">1.0</div>
+                                            <div style="position: absolute; top: 177px; left: 1px; text-align: right;" class="flot-tick-label tickLabel">2.0</div>
+                                            <div style="position: absolute; top: 118px; left: 1px; text-align: right;" class="flot-tick-label tickLabel">3.0</div>
+                                            <div style="position: absolute; top: 59px; left: 1px; text-align: right;" class="flot-tick-label tickLabel">4.0</div>
+                                            <div style="position: absolute; top: 0px; left: 1px; text-align: right;" class="flot-tick-label tickLabel">5.0</div>
                                         </div>
                                     </div><canvas class="flot-overlay" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 452px; height: 350px;" width="452" height="350"></canvas>
                                 </div>
                                 <script type="text/javascript">
                                     var flotBarsData = [
-                                        ["Jan", 28],
-                                        ["Feb", 42],
-                                        ["Mar", 25],
-                                        ["Apr", 23],
-                                        ["May", 37],
-                                        ["Jun", 33],
-                                        ["Jul", 18],
-                                        ["Aug", 14],
-                                        ["Sep", 18],
-                                        ["Oct", 15],
-                                        ["Nov", 4],
-                                        ["Dec", 7]
+                                        ["Jan", 2.8],
+                                        ["Feb", 4.2],
+                                        ["Mar", 2.5],
+                                        ["Apr", 2.3],
+                                        ["May", 3.7],
+                                        ["Jun", 3.3],
+                                        ["Jul", 1.8],
+                                        ["Aug", 1.4],
+                                        ["Sep", 1.8],
+                                        ["Oct", 1.5],
+                                        ["Nov", 4.0],
+                                        ["Dec", 4.7]
                                     ];
 
                                     // See: js/examples/examples.charts.js for more settings.
@@ -126,41 +126,58 @@ if (isset($_SESSION['ultra_log'])) {
                             <div class="card-body" style="display: block;">
 
                                 <!-- Flot: Pie -->
-                                <div class="chart chart-md" id="flotPie" style="padding: 0px; position: relative;"><canvas class="flot-base" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 452px; height: 350px;" width="452" height="350"></canvas><canvas class="flot-overlay" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 452px; height: 350px;" width="452" height="350"></canvas><span class="pieLabel" id="pieLabel0" style="position: absolute; top: 196px; left: 356.217px;">
-                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#0088cc;">Series 1<br>60%</div>
-                                    </span><span class="pieLabel" id="pieLabel1" style="position: absolute; top: 240px; left: 76.9417px;">
-                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#2baab1;">Series 2<br>10%</div>
-                                    </span><span class="pieLabel" id="pieLabel2" style="position: absolute; top: 122px; left: 48.875px;">
-                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#734ba9;">Series 3<br>15%</div>
-                                    </span><span class="pieLabel" id="pieLabel3" style="position: absolute; top: 6px; left: 132.675px;">
-                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#E36159;">Series 4<br>15%</div>
-                                    </span></div>
+                                <div class="chart chart-md" id="flotPie" style="padding: 0px; position: relative;"><canvas class="flot-base" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 452px; height: 350px;" width="452" height="350"></canvas><canvas class="flot-overlay" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 452px; height: 350px;" width="452" height="350"></canvas>
+                                    <span class="pieLabel" id="pieLabel0" style="position: absolute; top: 196px; left: 356.217px;">
+                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#0088cc;">A<br>40%</div>
+                                    </span>
+                                    <span class="pieLabel" id="pieLabel1" style="position: absolute; top: 240px; left: 76.9417px;">
+                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#2baab1;">B<br>10%</div>
+                                    </span>
+                                    <span class="pieLabel" id="pieLabel2" style="position: absolute; top: 122px; left: 48.875px;">
+                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#734ba9;">C<br>20%</div>
+                                    </span>
+                                    <span class="pieLabel" id="pieLabel3" style="position: absolute; top: 6px; left: 132.675px;">
+                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#E36159;">D<br>15%</div>
+                                    </span>
+                                    <span class="pieLabel" id="pieLabel4" style="position: absolute; top: 6px; left: 132.675px;">
+                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#E36159;">F<br>15%</div>
+                                    </span>
+                                </div>
                                 <script type="text/javascript">
                                     var flotPieData = [{
-                                        label: "Series 1",
-                                        data: [
-                                            [1, 60]
-                                        ],
-                                        color: '#0088cc'
-                                    }, {
-                                        label: "Series 2",
-                                        data: [
-                                            [1, 10]
-                                        ],
-                                        color: '#2baab1'
-                                    }, {
-                                        label: "Series 3",
-                                        data: [
-                                            [1, 15]
-                                        ],
-                                        color: '#734ba9'
-                                    }, {
-                                        label: "Series 4",
-                                        data: [
-                                            [1, 15]
-                                        ],
-                                        color: '#E36159'
-                                    }];
+                                            label: "A",
+                                            data: [
+                                                [1, 40]
+                                            ],
+                                            color: '#2baab1'
+
+                                        }, {
+                                            label: "B",
+                                            data: [
+                                                [1, 10]
+                                            ],
+                                            color: '#0088cc'
+                                        }, {
+                                            label: "C",
+                                            data: [
+                                                [1, 20]
+                                            ],
+                                            color: '#734ba9'
+                                        }, {
+                                            label: "D",
+                                            data: [
+                                                [1, 15]
+                                            ],
+                                            color: '#E36159'
+                                        },
+                                        {
+                                            label: "F",
+                                            data: [
+                                                [1, 15]
+                                            ],
+                                            color: 'red'
+                                        }
+                                    ];
 
                                     // See: js/examples/examples.charts.js for more settings.
                                 </script>
@@ -174,7 +191,7 @@ if (isset($_SESSION['ultra_log'])) {
             <div class="container position-relative py-5" style="min-height: 643px;" id="home">
                 <?php require_once('includes/svg_animation.php') ?>
                 <div class="row align-items-center py-5 mt-5 p-relative z-index-1">
-                <h1 class="card-title mb-2 font-weight-bold transition-2ms">CGPA Per Year <a href="#" class="btn btn-primary btn-with-arrow mb-2" href="#">Download<span><i class="fas fa-download"></i></span></a></h1>
+                    <h1 class="card-title mb-2 font-weight-bold transition-2ms">CGPA Per Year <a href="#" class="btn btn-primary btn-with-arrow mb-2" href="#">Download<span><i class="fas fa-download"></i></span></a></h1>
 
                     <?php
                     $studentLevel = calculateStudentLevel($_SESSION['student_set']);
