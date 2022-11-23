@@ -18,14 +18,17 @@
 								<nav class="collapse">
 									<ul class="nav nav-pills" id="mainNav">
 										<li class="dropdown">
-											<a class="dropdown-item active" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="index">Home</a>
+											<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="index">Home</a>
 										</li>
 										<li class="dropdown">
+											<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="cgpa">CGPA</a>
+										</li>
+										<!-- <li class="dropdown">
 											<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="#">About</a>
 										</li>
 										<li class="dropdown">
 											<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="#">Solutions</a>
-										</li>
+										</li> -->
 										<li class="dropdown">
 											<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="test">Test PHP</a>
 										</li>
