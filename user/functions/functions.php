@@ -691,9 +691,16 @@ function calculateGPAPerYear($year, $studentReg)
     }
   }
 
-  try{
-  return round(($totalScoreByGrade / $totalCredits), 2);
-  }catch(DivisionByZeroError){
+  if ($totalScoreByGrade == 0 && $totalCredits == 0) {
     return 0;
   }
+  return round(($totalScoreByGrade / $totalCredits), 2);
+
+  // try {
+  //   return round(($totalScoreByGrade / $totalCredits), 2);
+  // } catch (DivisionByZeroError) {
+  //   return 0;
+  // }
+
+
 }
