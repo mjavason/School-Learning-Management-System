@@ -1327,14 +1327,14 @@ function createNewCourseAnnouncement($title, $description, $category, $lecturerI
   return $db_handle->runQueryWithoutResponse($query);
 }
 
-function countViewsPerAnnouncement($viewJson){
+function countViewsPerAnnouncement($viewJson)
+{
   $decoded = json_decode($viewJson, true);
-  if(!empty($decoded)){
+  if (!empty($decoded)) {
     return count($decoded);
-  }else{
+  } else {
     return 0;
   }
-
 }
 
 

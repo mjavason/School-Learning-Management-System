@@ -33,4 +33,76 @@ echo '<pre>';
 
 //echo (calculateStudentLevel('2017/2018'));
 
-echo 'hello world';
+
+
+// $_GET['year'] = 2018;
+// $studentLevel = calculateStudentLevel($_SESSION['student_set']);
+// $coursesTaken = getCoursesTakenByStudent($_SESSION['student_reg']);
+
+// //loop through two semesters
+// for ($h = 1; $h <= 2; $h++) {
+
+//     //loop through each course taken by the student
+//     for ($i = 0; $i < count($coursesTaken); $i++) {
+
+//         //for each of the courses taken by the student get the result sheet
+//         $courseResults = getResultsPerCourseTaken($coursesTaken[$i], $h, $_GET['year']);
+//         if ($courseResults) {
+//             $courseInfo = getCourseInfo($courseResults['course_id']);
+
+//             //Search through the result sheet for this particular student's result and get their corresponding incourse and exam values
+//             $personalResult = getPersonalResult($courseResults['results'], $_SESSION['student_reg']);
+//             if ($personalResult) {
+//                 echo ('level' . $i);
+//                 echo '<br>';
+//                 echo 'course code' . $courseInfo['course_code'];
+//                 echo '<br>';
+
+//                 echo 'Incourse:';
+//                 if (isset($personalResult['incourse'])) {
+//                     $incourse = compileIncourse($personalResult['incourse']);
+//                     echo $incourse;
+//                 } else {
+//                     $incourse = 0;
+//                     echo $incourse;
+//                 }
+//                 echo '<br>';
+//                 echo 'Exam:';
+//                 if (isset($personalResult['exam'])) {
+//                     $exam = compileExam($personalResult['exam']);
+//                     echo $exam;
+//                 } else {
+//                     $exam = 0;
+//                     echo $exam;
+//                 }
+
+//                 echo '<br>';
+//                 echo 'Grade:';
+//                 echo returnGrade($incourse + $exam);
+//             }
+//         }
+//     }
+//     echo '<br>';
+//     echo '<br>';
+//     echo '<br>';
+//     echo '<br>';
+//     echo '<br>';
+//     echo '<br>';
+//     echo '<br>';
+//     echo '<br>';
+//     echo '<br>';
+//     echo '<br>';
+// }
+
+// echo calculateGPAPerYear(2018, '2017030180311');
+
+$studentLevel = calculateStudentLevel($_SESSION['student_set']);
+$coursesTaken = getCoursesTakenByStudent($_SESSION['student_reg']);
+$studentStarterYear = date('Y') - $studentLevel;
+for ($i = $studentStarterYear; $i <= date('Y'); $i++) {
+    $year = $i;
+
+    echo ($i.': '. countCoursesPerYear($coursesTaken, $year));
+    echo '<br>';
+    // countCoursesPerYear($coursesTaken, $year);
+}

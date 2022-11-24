@@ -67,18 +67,21 @@ if (isset($_SESSION['ultra_log'])) {
                                 <div class="chart chart-md" id="flotBars" style="padding: 0px; position: relative;"><canvas class="flot-base" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 452px; height: 350px;" width="452" height="350"></canvas>
                                     <div class="flot-text" style="position: absolute; inset: 0px; font-size: smaller; color: rgb(84, 84, 84);">
                                         <div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; inset: 0px;">
-                                            <div style="position: absolute; max-width: 40px; top: 323px; left: 34px; text-align: center;" class="flot-tick-label tickLabel">Jan</div>
-                                            <div style="position: absolute; max-width: 40px; top: 323px; left: 68px; text-align: center;" class="flot-tick-label tickLabel">Feb</div>
-                                            <div style="position: absolute; max-width: 40px; top: 323px; left: 104px; text-align: center;" class="flot-tick-label tickLabel">Mar</div>
-                                            <div style="position: absolute; max-width: 40px; top: 323px; left: 139px; text-align: center;" class="flot-tick-label tickLabel">Apr</div>
-                                            <div style="position: absolute; max-width: 40px; top: 323px; left: 173px; text-align: center;" class="flot-tick-label tickLabel">May</div>
-                                            <div style="position: absolute; max-width: 40px; top: 323px; left: 208px; text-align: center;" class="flot-tick-label tickLabel">Jun</div>
-                                            <div style="position: absolute; max-width: 40px; top: 323px; left: 245px; text-align: center;" class="flot-tick-label tickLabel">Jul</div>
-                                            <div style="position: absolute; max-width: 40px; top: 323px; left: 277px; text-align: center;" class="flot-tick-label tickLabel">Aug</div>
-                                            <div style="position: absolute; max-width: 40px; top: 323px; left: 312px; text-align: center;" class="flot-tick-label tickLabel">Sep</div>
-                                            <div style="position: absolute; max-width: 40px; top: 323px; left: 348px; text-align: center;" class="flot-tick-label tickLabel">Oct</div>
-                                            <div style="position: absolute; max-width: 40px; top: 323px; left: 382px; text-align: center;" class="flot-tick-label tickLabel">Nov</div>
-                                            <div style="position: absolute; max-width: 40px; top: 323px; left: 416px; text-align: center;" class="flot-tick-label tickLabel">Dec</div>
+                                            <?php
+                                            $studentLevel = calculateStudentLevel($_SESSION['student_set']);
+                                            $coursesTaken = getCoursesTakenByStudent($_SESSION['student_reg']);
+                                            $studentStarterYear = date('Y') - $studentLevel;
+                                            for ($i = $studentStarterYear; $i <= date('Y'); $i++) {
+                                                $year = $i;
+
+                                                // echo ($i . ': ' . countCoursesPerYear($coursesTaken, $year));
+                                                // echo '<br>';
+                                                // countCoursesPerYear($coursesTaken, $year);
+                                                if (countCoursesPerYear($coursesTaken, $year) > 0) {
+                                            ?>
+                                                    <div style="position: absolute; max-width: 40px; top: 323px; left: 34px; text-align: center;" class="flot-tick-label tickLabel"><?= $year ?></div>
+                                            <?php }
+                                            } ?>
                                         </div>
                                         <div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; inset: 0px;">
                                             <div style="position: absolute; top: 295px; left: 8px; text-align: right;" class="flot-tick-label tickLabel">0</div>
@@ -92,18 +95,21 @@ if (isset($_SESSION['ultra_log'])) {
                                 </div>
                                 <script type="text/javascript">
                                     var flotBarsData = [
-                                        ["Jan", 2.8],
-                                        ["Feb", 4.2],
-                                        ["Mar", 2.5],
-                                        ["Apr", 2.3],
-                                        ["May", 3.7],
-                                        ["Jun", 3.3],
-                                        ["Jul", 1.8],
-                                        ["Aug", 1.4],
-                                        ["Sep", 1.8],
-                                        ["Oct", 1.5],
-                                        ["Nov", 4.0],
-                                        ["Dec", 4.7]
+
+                                        <?php
+                                        $studentLevel = calculateStudentLevel($_SESSION['student_set']);
+                                        $coursesTaken = getCoursesTakenByStudent($_SESSION['student_reg']);
+                                        $studentStarterYear = date('Y') - $studentLevel;
+                                        for ($i = $studentStarterYear; $i < date('Y'); $i++) {
+                                            $year = $i;
+
+                                            // echo ($i . ': ' . countCoursesPerYear($coursesTaken, $year));
+                                            // echo '<br>';
+                                            // countCoursesPerYear($coursesTaken, $year);
+                                            if (countCoursesPerYear($coursesTaken, $year) > 0) {
+                                        ?>["<?= $year ?>", <?= calculateGPAPerYear($year, $_SESSION['student_reg']) ?>],
+                                        <?php  }
+                                        } ?>["<?= date('Y') ?>", <?= calculateGPAPerYear(date('Y'), $_SESSION['student_reg']) ?>]
                                     ];
 
                                     // See: js/examples/examples.charts.js for more settings.
@@ -199,20 +205,22 @@ if (isset($_SESSION['ultra_log'])) {
 
                     for ($i = 0; $i < $studentLevel; $i++) {
                         $year = date('Y') - $studentLevel + $i + 1;
+                        if (countCoursesPerYear($coursesTaken, $year) > 0) {
                     ?>
-                        <div class="col-md-6 p-1 col-lg-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
-                            <div class="card bg-color-grey card-text-color-hover-light border-0 bg-color-hover-primary transition-2ms box-shadow-1 box-shadow-1-primary box-shadow-1-hover">
-                                <a href="courses?year=<?php echo $year; ?>&level=<?= $i + 1 ?>">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-1 text-4 font-weight-bold transition-2ms">
-                                            Year <?php echo $i + 1; ?> (<?php echo ($year) ?>)
-                                        </h4>
-                                        GPA: <?= countCoursesPerYear($coursesTaken, $year) ?>
-                                    </div>
-                                </a>
+                            <div class="col-md-6 p-1 col-lg-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                                <div class="card bg-color-grey card-text-color-hover-light border-0 bg-color-hover-primary transition-2ms box-shadow-1 box-shadow-1-primary box-shadow-1-hover">
+                                    <a href="courses?year=<?php echo $year; ?>&level=<?= $i + 1 ?>">
+                                        <div class="card-body">
+                                            <h4 class="card-title mb-1 text-4 font-weight-bold transition-2ms">
+                                                Year <?php echo $i + 1; ?> (<?php echo ($year) ?>)
+                                            </h4>
+                                            Courses: <?= countCoursesPerYear($coursesTaken, $year) ?>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    <?php } ?>
+                    <?php }
+                    } ?>
 
                 </div>
             </div>

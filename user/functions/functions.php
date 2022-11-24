@@ -622,3 +622,78 @@ function compileExam($examArray)
 
   return ceil(70 * ((($scoretotal / $absoluteTotal) * 100) / 100));
 }
+
+function calculateScoreByGrade($grade, $creditLoad)
+{
+  switch ($grade) {
+    case 'A':
+      return (5 * $creditLoad);
+
+    case 'B':
+      return (4 * $creditLoad);
+
+    case 'C':
+      return (3 * $creditLoad);
+
+    case 'D':
+      return (2 * $creditLoad);
+
+    default:
+      return 0;
+  }
+}
+
+function calculateGPAPerYear($year, $studentReg)
+{
+  $totalCredits = 0;
+  $totalScoreByGrade = 0;
+  // $year = 2018;
+  $coursesTaken = getCoursesTakenByStudent($studentReg);
+
+  //loop through two semesters
+  for ($h = 1; $h <= 2; $h++) {
+
+    //loop through each course taken by the student
+    for ($i = 0; $i < count($coursesTaken); $i++) {
+      $incourse = 0;
+      $exam = 0;
+      //for each of the courses taken by the student get the result sheet
+      $courseResults = getResultsPerCourseTaken($coursesTaken[$i], $h, $year);
+      if ($courseResults) {
+        $courseInfo = getCourseInfo($courseResults['course_id']);
+
+        //Search through the result sheet for this particular student's result and get their corresponding incourse and exam values
+        $personalResult = getPersonalResult($courseResults['results'], $studentReg);
+        if ($personalResult) {
+
+          //get incourse
+          if (isset($personalResult['incourse'])) {
+            $incourse = compileIncourse($personalResult['incourse']);
+          } else {
+            $incourse = 0;
+          }
+
+          //get exam
+          if (isset($personalResult['exam'])) {
+            $exam = compileExam($personalResult['exam']);
+          } else {
+            $exam = 0;
+          }
+
+          //get grade for total of incourse and exam(A, B, C, D, F)
+          $grade = returnGrade($incourse + $exam);
+
+          //get score per grade [ 5(A) * 3(credit load) ]
+          $totalScoreByGrade += calculateScoreByGrade($grade, $courseResults['course_credits']);
+          $totalCredits += $courseResults['course_credits'];
+        }
+      }
+    }
+  }
+
+  try{
+  return round(($totalScoreByGrade / $totalCredits), 2);
+  }catch(DivisionByZeroError){
+    return 0;
+  }
+}
