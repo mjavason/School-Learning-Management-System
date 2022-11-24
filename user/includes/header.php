@@ -20,9 +20,11 @@
 										<li class="dropdown">
 											<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="index">Home</a>
 										</li>
-										<li class="dropdown">
-											<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="cgpa">CGPA</a>
-										</li>
+										<?php if (isset($_SESSION['log'])) { ?>
+											<li class="dropdown">
+												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="cgpa">CGPA</a>
+											</li>
+										<?php } ?>
 										<!-- <li class="dropdown">
 											<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="#">About</a>
 										</li>
