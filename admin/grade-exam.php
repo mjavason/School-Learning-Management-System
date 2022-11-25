@@ -99,12 +99,13 @@ if (isset($_GET['result_id']) && isset($_GET['course_id']) && isset($_GET['semes
                                             <label>Student Score</label>
                                             <input onkeyup="maxValue('student_score', 70)" id="student_score" max=70 type="number" placeholder="" class="form-control">
                                         </div>
-                                        <!-- <div class="col-12 form-group">
-                                            <label>Comments</label>
-                                            <textarea class="textarea form-control" name="message" id="form-message" cols="10" rows="4"></textarea>
-                                        </div> -->
+                                        <div class="col-12-xxxl col-lg-6 col-12 form-group">
+                                            <label>Comment</label>
+                                            <input type="text" id="grade_comment" placeholder="**Excellent result..." class="form-control">
+                                        </div>
+                                      
                                         <div class="col-12 form-group mg-t-8">
-                                            <button type="button" onclick="updateResults('functions/updateResults', getInputValuesAndReturnTheirContentAsJson(['grade_title', 'grade_total', 'student_reg_number', 'student_score']))" id="add_incourse_button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
+                                            <button type="button" onclick="updateResults('functions/updateResults', getInputValuesAndReturnTheirContentAsJson(['grade_title', 'grade_total', 'student_reg_number', 'student_score', 'grade_comment']))" id="add_incourse_button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
                                             <!-- <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button> -->
                                         </div>
                                     </div>

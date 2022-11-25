@@ -49,7 +49,7 @@ if (isset($_SESSION['ultra_log'])) {
         <div role="main" class="main">
             <div class="container position-relative py-5" style="" id="home">
                 <div class="row align-items-center py-5 mt-5 p-relative z-index-1">
-                    <h1 class="card-title mb-2 font-weight-bold transition-2ms">CGPA Round Up <a href="#" class="btn btn-primary btn-with-arrow mb-2" href="#">Download<span><i class="fas fa-download"></i></span></a></h1>
+                    <h1 class="card-title mb-2 font-weight-bold transition-2ms">CGPA Round Up [<?= getGPAPerStudent($_SESSION['student_reg']) ?>] <a href="#" class="btn btn-primary btn-with-arrow mb-2" href="#">Download<span><i class="fas fa-download"></i></span></a></h1>
                     <div class="col-lg-6">
                         <section class="card card-admin">
                             <header class="card-header">
@@ -133,53 +133,65 @@ if (isset($_SESSION['ultra_log'])) {
 
                                 <!-- Flot: Pie -->
                                 <div class="chart chart-md" id="flotPie" style="padding: 0px; position: relative;"><canvas class="flot-base" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 452px; height: 350px;" width="452" height="350"></canvas><canvas class="flot-overlay" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 452px; height: 350px;" width="452" height="350"></canvas>
+                                    <?php
+                                    $studentLevel = calculateStudentLevel($_SESSION['student_set']);
+                                    $coursesTaken = getCoursesTakenByStudent($_SESSION['student_reg']);
+                                    $studentStarterYear = date('Y') - $studentLevel;
+
+                                    $gradePercentages = getGradePercentageOccurencePerStudent($_SESSION['student_reg']);
+                                    $aPercentage = ($gradePercentages[0]['A'] / $gradePercentages[0]['total']) * 100;
+                                    $bPercentage = ($gradePercentages[0]['B'] / $gradePercentages[0]['total']) * 100;
+                                    $cPercentage = ($gradePercentages[0]['C'] / $gradePercentages[0]['total']) * 100;
+                                    $dPercentage = ($gradePercentages[0]['D'] / $gradePercentages[0]['total']) * 100;
+                                    $fPercentage = ($gradePercentages[0]['F'] / $gradePercentages[0]['total']) * 100;
+                                    ?>
                                     <span class="pieLabel" id="pieLabel0" style="position: absolute; top: 196px; left: 356.217px;">
-                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#0088cc;">A<br>40%</div>
+                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#0088cc;">A<br><?= $aPercentage ?>%</div>
                                     </span>
                                     <span class="pieLabel" id="pieLabel1" style="position: absolute; top: 240px; left: 76.9417px;">
-                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#2baab1;">B<br>10%</div>
+                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#2baab1;">B<br><?= $bPercentage ?>%</div>
                                     </span>
                                     <span class="pieLabel" id="pieLabel2" style="position: absolute; top: 122px; left: 48.875px;">
-                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#734ba9;">C<br>20%</div>
+                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#734ba9;">C<br><?= $cPercentage ?>%</div>
                                     </span>
                                     <span class="pieLabel" id="pieLabel3" style="position: absolute; top: 6px; left: 132.675px;">
-                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#E36159;">D<br>15%</div>
+                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#E36159;">D<br><?= $dPercentage ?>%</div>
                                     </span>
                                     <span class="pieLabel" id="pieLabel4" style="position: absolute; top: 6px; left: 132.675px;">
-                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#E36159;">F<br>15%</div>
+                                        <div style="font-size:x-small;text-align:center;padding:2px;color:#E36159;">F<br><?= $fPercentage ?>%</div>
                                     </span>
                                 </div>
                                 <script type="text/javascript">
                                     var flotPieData = [{
                                             label: "A",
                                             data: [
-                                                [1, 40]
+                                                [<?= $gradePercentages[0]['A'] ?>, <?= $aPercentage ?>]
                                             ],
                                             color: '#2baab1'
 
                                         }, {
                                             label: "B",
                                             data: [
-                                                [1, 10]
+                                                [<?= $gradePercentages[0]['B'] ?>, <?= $bPercentage ?>]
                                             ],
                                             color: '#0088cc'
                                         }, {
                                             label: "C",
                                             data: [
-                                                [1, 20]
+                                                [<?= $gradePercentages[0]['C'] ?>, <?= $cPercentage ?>]
                                             ],
                                             color: '#734ba9'
                                         }, {
                                             label: "D",
                                             data: [
-                                                [1, 15]
+                                                [<?= $gradePercentages[0]['D'] ?>, <?= $dPercentage ?>]
                                             ],
                                             color: '#E36159'
                                         },
                                         {
                                             label: "F",
                                             data: [
-                                                [1, 15]
+                                                [<?= $gradePercentages[0]['F'] ?>, <?= $fPercentage ?>]
                                             ],
                                             color: 'red'
                                         }
@@ -202,24 +214,27 @@ if (isset($_SESSION['ultra_log'])) {
                     <?php
                     $studentLevel = calculateStudentLevel($_SESSION['student_set']);
                     $coursesTaken = getCoursesTakenByStudent($_SESSION['student_reg']);
-
-                    for ($i = 0; $i < $studentLevel; $i++) {
-                        $year = date('Y') - $studentLevel + $i + 1;
+                    $studentStarterYear = date('Y') - $studentLevel;
+                    $counter = 1;
+                    for ($i = $studentStarterYear; $i <= date('Y'); $i++) {
+                        $year = $i;
                         if (countCoursesPerYear($coursesTaken, $year) > 0) {
                     ?>
                             <div class="col-md-6 p-1 col-lg-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
                                 <div class="card bg-color-grey card-text-color-hover-light border-0 bg-color-hover-primary transition-2ms box-shadow-1 box-shadow-1-primary box-shadow-1-hover">
-                                    <a href="courses?year=<?php echo $year; ?>&level=<?= $i + 1 ?>">
+                                    <a href="courses?year=<?php echo $year; ?>&level=<?= $counter ?>">
                                         <div class="card-body">
                                             <h4 class="card-title mb-1 text-4 font-weight-bold transition-2ms">
-                                                Year <?php echo $i + 1; ?> (<?php echo ($year) ?>)
+                                                Year <?php echo $counter; ?> (<?php echo ($year) ?>)
                                             </h4>
-                                            Courses: <?= countCoursesPerYear($coursesTaken, $year) ?>
+                                            GPA: <?= calculateGPAPerYear($year, $_SESSION['student_reg']) ?>
                                         </div>
                                     </a>
                                 </div>
                             </div>
-                    <?php }
+                    <?php
+                        }
+                        $counter++;
                     } ?>
 
                 </div>

@@ -96,13 +96,18 @@ echo '<pre>';
 
 // echo calculateGPAPerYear(2018, '2017030180311');
 
-$studentLevel = calculateStudentLevel($_SESSION['student_set']);
-$coursesTaken = getCoursesTakenByStudent($_SESSION['student_reg']);
-$studentStarterYear = date('Y') - $studentLevel;
-for ($i = $studentStarterYear; $i <= date('Y'); $i++) {
-    $year = $i;
+// $studentLevel = calculateStudentLevel($_SESSION['student_set']);
+// $coursesTaken = getCoursesTakenByStudent($_SESSION['student_reg']);
+// $studentStarterYear = date('Y') - $studentLevel;
+// for ($i = $studentStarterYear; $i <= date('Y'); $i++) {
+//     $year = $i;
 
-    echo ($i.': '. countCoursesPerYear($coursesTaken, $year));
-    echo '<br>';
-    // countCoursesPerYear($coursesTaken, $year);
-}
+//     echo ($i.': '. countCoursesPerYear($coursesTaken, $year));
+//     echo '<br>';
+//     // countCoursesPerYear($coursesTaken, $year);
+// }
+
+// print_r(getGradePercentageOccurencePerStudent($_SESSION['student_reg']));
+
+$coursesTaken = getCoursesTakenByStudent(2017030180311);
+echo countCoursesPerYear($coursesTaken, 2019);

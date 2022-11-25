@@ -47,23 +47,27 @@ if (isset($_SESSION['ultra_log'])) {
 					$studentLevel = calculateStudentLevel($_SESSION['student_set']);
 					$coursesTaken = getCoursesTakenByStudent($_SESSION['student_reg']);
 
-					for ($i = 0; $i < $studentLevel; $i++) {
-						$year = date('Y') - $studentLevel + $i + 1;
+					$studentStarterYear = date('Y') - $studentLevel;
+					$counter = 1;
+					for ($i = $studentStarterYear; $i <= date('Y'); $i++) {
+						$year = $i;
 						if (countCoursesPerYear($coursesTaken, $year) > 0) {
 					?>
 							<div class="col-md-6 p-1 col-lg-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
 								<div class="card bg-color-grey card-text-color-hover-light border-0 bg-color-hover-primary transition-2ms box-shadow-1 box-shadow-1-primary box-shadow-1-hover">
-									<a href="courses?year=<?php echo $year; ?>&level=<?= $i + 1 ?>">
+									<a href="courses?year=<?php echo $year; ?>&level=<?= $counter ?>">
 										<div class="card-body">
 											<h4 class="card-title mb-1 text-4 font-weight-bold transition-2ms">
-												Year <?php echo $i + 1; ?> (<?php echo ($year) ?>)
+												Year <?php echo $counter; ?> (<?php echo ($year) ?>)
 											</h4>
 											Courses: <?= countCoursesPerYear($coursesTaken, $year) ?>
 										</div>
 									</a>
 								</div>
 							</div>
-					<?php }
+					<?php
+						}
+						$counter++;
 					} ?>
 
 				</div>

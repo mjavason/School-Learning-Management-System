@@ -704,3 +704,117 @@ function calculateGPAPerYear($year, $studentReg)
 
 
 }
+
+function getGradePercentageOccurencePerStudent($studentReg)
+{
+  $totalAs = 0;
+  $totalBs = 0;
+  $totalCs = 0;
+  $totalDs = 0;
+  $totalFs = 0;
+
+  // $year = 2018;
+  $coursesTaken = getCoursesTakenByStudent($studentReg);
+  $studentLevel = calculateStudentLevel($_SESSION['student_set']);
+  $studentStarterYear = date('Y') - $studentLevel;
+
+  for ($g = $studentStarterYear; $g <= date('Y'); $g++) {
+    $year = $g;
+    //loop through two semesters
+    for ($h = 1; $h <= 2; $h++) {
+
+      //loop through each course taken by the student
+      for ($i = 0; $i < count($coursesTaken); $i++) {
+        $incourse = 0;
+        $exam = 0;
+        //for each of the courses taken by the student get the result sheet
+        $courseResults = getResultsPerCourseTaken($coursesTaken[$i], $h, $year);
+        if ($courseResults) {
+          $courseInfo = getCourseInfo($courseResults['course_id']);
+
+          //Search through the result sheet for this particular student's result and get their corresponding incourse and exam values
+          $personalResult = getPersonalResult($courseResults['results'], $studentReg);
+          if ($personalResult) {
+
+            //get incourse
+            if (isset($personalResult['incourse'])) {
+              $incourse = compileIncourse($personalResult['incourse']);
+            } else {
+              $incourse = 0;
+            }
+
+            //get exam
+            if (isset($personalResult['exam'])) {
+              $exam = compileExam($personalResult['exam']);
+            } else {
+              $exam = 0;
+            }
+
+            //get grade for total of incourse and exam(A, B, C, D, F)
+            $grade = returnGrade($incourse + $exam);
+            switch ($grade) {
+              case 'A':
+                $totalAs++;
+                break;
+
+              case 'B':
+                $totalBs++;
+                break;
+
+              case 'C':
+                $totalCs++;
+                break;
+
+              case 'D':
+                $totalDs++;
+                break;
+
+              case 'F':
+                $totalFs++;
+                break;
+
+              default:
+                break;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  $total = $totalAs + $totalBs + $totalCs + $totalDs + $totalFs;
+  $results = array(['A' => $totalAs, 'B' => $totalBs, 'C' => $totalCs, 'D' => $totalDs, 'F' => $totalFs, 'total' => $total]);
+  return $results;
+
+  // try {
+  //   return round(($totalScoreByGrade / $totalCredits), 2);
+  // } catch (DivisionByZeroError) {
+  //   return 0;
+  // }
+
+
+}
+
+function getGPAPerStudent($studentReg)
+{
+  $numberOfYears = 0;
+  $totalGP = 0;
+  $studentLevel = calculateStudentLevel($_SESSION['student_set']);
+  $coursesTaken = getCoursesTakenByStudent($_SESSION['student_reg']);
+  $studentStarterYear = date('Y') - $studentLevel;
+  for ($i = $studentStarterYear; $i < date('Y'); $i++) {
+    $year = $i;
+
+    // echo ($i . ': ' . countCoursesPerYear($coursesTaken, $year));
+    // echo '<br>';
+    // countCoursesPerYear($coursesTaken, $year);
+    if (countCoursesPerYear($coursesTaken, $year) > 0) {
+      $numberOfYears++;
+      $totalGP += calculateGPAPerYear($year, $studentReg);
+    }
+  }
+  if ($totalGP == 0 || $numberOfYears == 0) {
+    return 0;
+  }
+  return round(($totalGP / $numberOfYears), 2);
+}
