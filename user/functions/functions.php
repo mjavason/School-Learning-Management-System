@@ -364,6 +364,19 @@ function getDepartmentId($departmentName)
   }
 }
 
+function getCourseInfoFromName($courseName)
+{
+
+  global $db_handle;
+
+  $result = $db_handle->selectAllWhere('courses', 'course_name', $courseName);
+  if (isset($result)) {
+    return $result[0];
+  } else {
+    return false;
+  }
+}
+
 function createNewStudent($firstName, $lastName, $gender, $email, $phone, $reg, $departmentId, $password)
 {
   global $db_handle;
@@ -817,4 +830,66 @@ function getGPAPerStudent($studentReg)
     return 0;
   }
   return round(($totalGP / $numberOfYears), 2);
+}
+
+//This function has a flaw. If the same course has multiple sessions, the one created last will be the one assigneed to the student... This is confusing in it of itself because one course shouldnt have a session for different sets... It's just a scenario that could happen.
+function checkIfCourseSessionExistsAndReturnInfo($courseId)
+{
+  global $db_handle;
+  //$response = [];
+  $result = $db_handle->selectAllWhereWith2Conditions('results', 'course_id', $courseId, 'inactive', 0);
+
+  if (isset($result)) {
+    return $result[0];
+  } else {
+    return false;
+  }
+}
+
+function addNewCourseToStudent($courseId, $resultId, $credits, $resultSet, $studentReg)
+{
+  $entry = array('course_id' => $courseId, 'course_credits' => $credits, 'course_set' => $resultSet, 'result_id' => $resultId);
+  $coursesTaken = getCoursesTakenByStudent($studentReg);
+
+  array_push($coursesTaken, $entry);
+  $coursesTaken = json_encode($coursesTaken);
+
+  global $db_handle;
+  //$response = [];
+  $result = $db_handle->updateSingleColumnWhere1Condition('students', 'courses_taken', $coursesTaken, 'reg_no', $studentReg);
+
+  return $result;
+}
+
+function doesCourseRegistrationHaveDuplicate($studentReg, $newCourseSessionId)
+{
+  $courseTaken = getCoursesTakenByStudent($studentReg);
+  foreach ($courseTaken as $course) {
+    if (isset($course['result_id'])) {
+      if ($course['result_id'] == $newCourseSessionId) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+function getAllAnnouncementsForAllStudentsCourses($studentReg)
+{
+  $coursesTaken = getCoursesTakenByStudent($studentReg);
+  $allAnnouncementsForAllStudentCourses = [];
+
+  global $db_handle;
+  //$response = [];
+  foreach ($coursesTaken as $course) {
+    if (isset($course['result_id']) && isset($course['course_id']))
+      $result = $db_handle->selectAllWhereWith2Conditions('announcements', 'result_id', $course['result_id'], 'course_id', $course['course_id']);
+    if ($result) {
+      foreach ($result as $announcement) {
+        array_push($allAnnouncementsForAllStudentCourses, $announcement);
+      }
+    }
+  }
+  return $allAnnouncementsForAllStudentCourses;
 }

@@ -116,12 +116,12 @@ if (isset($_SESSION['ultra_log'])) {
 						</div>
 					</div>
 				</div>
-				<p class="mt-4">Or you can join with</p>
+				<!-- <p class="mt-4">Or you can join with</p>
 				<ul class="social-links mt-2">
 					<li><a class="facebook-bg" href="#0"><i class="lab la-facebook-f"></i></a></li>
 					<li><a class="twitter-bg" href="#0"><i class="lab la-twitter"></i></a></li>
 					<li><a class="instagram-bg" href="#0"><i class="lab la-instagram"></i></a></li>
-				</ul>
+				</ul> -->
 			</form>
 
 		</div>

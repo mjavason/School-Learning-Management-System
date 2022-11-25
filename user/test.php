@@ -109,5 +109,10 @@ echo '<pre>';
 
 // print_r(getGradePercentageOccurencePerStudent($_SESSION['student_reg']));
 
-$coursesTaken = getCoursesTakenByStudent(2017030180311);
-echo countCoursesPerYear($coursesTaken, 2019);
+// $coursesTaken = getCoursesTakenByStudent(2017030180311);
+// echo countCoursesPerYear($coursesTaken, 2019);
+
+// $courseId = 1;
+// print_r(checkIfCourseSessionExistsAndReturnInfo($courseId));
+
+print_r(getAllAnnouncementsForAllStudentsCourses($_SESSION['student_reg']));

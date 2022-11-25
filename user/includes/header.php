@@ -22,7 +22,13 @@
 										</li>
 										<?php if (isset($_SESSION['log'])) { ?>
 											<li class="dropdown">
+												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="register_course">Register Course</a>
+											</li>
+											<li class="dropdown">
 												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="cgpa">CGPA</a>
+											</li>
+											<li class="dropdown">
+												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="announcements">Announcements</a>
 											</li>
 										<?php } ?>
 										<!-- <li class="dropdown">

@@ -2,6 +2,25 @@
     {
         "course_id": "1",
         "course_credits": "3",
-        "course_set": "2017/2018"
+        "course_set": "2017/2018",
+        "result_id": "2080"
+    },
+    {
+        "course_id": "2",
+        "course_credits": "6",
+        "course_set": "2017/2018",
+        "result_id": "2081"
+    },
+    {
+        "course_id": "5",
+        "course_credits": "2",
+        "course_set": "2017/2018",
+        "result_id": "2082"
+    },
+    {
+        "course_id": "7",
+        "course_credits": "3",
+        "course_set": "2017/2018",
+        "result_id": "2083"
     }
 ]

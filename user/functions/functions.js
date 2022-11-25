@@ -905,6 +905,90 @@ function onFilterBoxReady() {
     this.focus(true);
 }
 
+function simpleAsyncSearch(url, inputId) {
+    inputId = document.getElementById(inputId);
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: 'keyword=' + $(inputId).val(),
+        beforeSend: function () {
+            //setSearchBarLoader('line');
+        },
+        success: function (data) {
+            console.log(data);
+            $("#course_list").show();
+            $("#course_list").html(data);
+            //removeSearchBarLoader('line');
+        }
+    });
+}
+
+function selectCourse(val) {
+    $("#course_name").val(val);
+    $("#course_list").hide();
+    $("#register_course_button").prop({
+        disabled: false
+    })
+}
+
+function registerCourse(url, dataRequest) {
+    //console.log(dataRequest);
+    swal({
+        title: "Are you sure?",
+        text: "This action can't be reversed easily.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willSend) => {
+            if (willSend) {
+
+                $.post(url, dataRequest,
+                    function (data, status, jqXHR) {// success callback
+                        //$('#ajax_result').value = ('status: ' + status + ', data: ' + data + '<br>');
+                        //console.log(data);
+                        var dataParsed = JSON.parse(data);
+                        //console.log(dataParsed);
+                        removeLoader();
+
+
+                        if (dataParsed[0].error == null) {
+                            swal(dataParsed[0].success, {
+                                title: "Success",
+                                icon: "success"
+                            })
+
+                                .then((value) => {
+                                    if (value) {
+                                        //swal(`The returned value is: ${value}`);
+                                        window.location = 'register_course';
+                                    } else {
+                                        //swal(`The returned value is: ${value}`);
+                                        window.location = 'register_course';
+                                    }
+                                });
+
+                        } else {
+                            swal({
+                                //title: "New Course",
+                                title: "Error",
+                                icon: "error",
+                                //text: "Error: " + dataParsed[0].error
+                                text: dataParsed[0].error
+                                //button: "Got It!",
+                            });
+
+                        }
+                    })
+
+
+
+            } else {
+                //swal("Your imaginary file is safe!");
+            }
+        });
+}
+
 // function dollarFormat(number) {
 //     //window.alert('This naira format function is working');
 //     console.log('inside dollarFormat function');
