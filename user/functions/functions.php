@@ -245,6 +245,13 @@ function confirmUserEmailAndPassword($postemail, $postpassword, $rememberMe)
 
       $_SESSION['log'] = true;
 
+
+      $announcements = getAllAnnouncementsForStudent($_SESSION['student_reg']);
+      $readAnnouncements = getReadOrUnreadAnnouncements($announcements, $_SESSION['student_id']);
+      $unreadAnnouncements = getReadOrUnreadAnnouncements($announcements, $_SESSION['student_id'], true);
+
+      $_SESSION['read_announcemts'] = count($readAnnouncements);
+      $_SESSION['unread_announcements'] = count($unreadAnnouncements);
       // //This is the line of code for saving cookies AKA remember me
 
       // if (isset($remember)) {
@@ -875,7 +882,7 @@ function doesCourseRegistrationHaveDuplicate($studentReg, $newCourseSessionId)
   return false;
 }
 
-function getAllAnnouncementsForAllStudentsCourses($studentReg)
+function getAllAnnouncementsForStudent($studentReg)
 {
   $coursesTaken = getCoursesTakenByStudent($studentReg);
   $allAnnouncementsForAllStudentCourses = [];
@@ -892,4 +899,87 @@ function getAllAnnouncementsForAllStudentsCourses($studentReg)
     }
   }
   return $allAnnouncementsForAllStudentCourses;
+}
+
+function getReadOrUnreadAnnouncements($allAnnouncements, $studentId, $unread = null)
+{
+  $readAnnouncements = [];
+  $unreadAnnouncements = [];
+
+  foreach ($allAnnouncements as $annoucement) {
+    if (!empty($annoucement['viewers'])) {
+      $views = json_decode($annoucement['viewers'], true);
+      if (hasStudentViewed($studentId, $views)) {
+        array_push($readAnnouncements, $annoucement);
+      } else {
+        array_push($unreadAnnouncements, $annoucement);
+      }
+    } else {
+      array_push($unreadAnnouncements, $annoucement);
+    }
+  }
+
+  if ($unread) {
+    return $unreadAnnouncements;
+  } else {
+    return $readAnnouncements;
+  }
+}
+
+function hasStudentViewed($studentId, $viewArray)
+{
+  if(!empty($viewArray)){
+    foreach ($viewArray as $view) {
+    if (isset($view['id'])) {
+      if ($view['id'] == $studentId) {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  }
+  }
+  
+  return false;
+}
+
+function formatDateFriendlier($date, $format = null)
+{
+  if (isset($format)) {
+    return date($format, strtotime($date));
+  }
+  return date('d', strtotime($date)) . '-' . date('M', strtotime($date)) . '-' . date('Y', strtotime($date));
+}
+
+function getAnnouncementInfo($id)
+{
+  global $db_handle;
+  //$response = [];
+  $result = $db_handle->selectAllWhere('announcements', 'id', $id);
+
+  if (isset($result)) {
+    // //createLog('Success', 'getStudentName');
+    return ($result[0]);
+  } else {
+    // //createLog('Failed', 'getStudentName');
+    return false;
+  }
+}
+
+function markAnnouncementRead($announcement_id, $updatedViewers)
+{
+  $updatedViewers = json_encode($updatedViewers);
+
+  global $db_handle;
+  //$response = [];
+  $result = $db_handle->updateSingleColumnWhere1Condition('announcements', 'viewers', $updatedViewers, 'id', $announcement_id);
+  if ($result) {
+    $announcements = getAllAnnouncementsForStudent($_SESSION['student_reg']);
+    $readAnnouncements = getReadOrUnreadAnnouncements($announcements, $_SESSION['student_id']);
+    $unreadAnnouncements = getReadOrUnreadAnnouncements($announcements, $_SESSION['student_id'], true);
+
+    $_SESSION['read_announcemts'] = count($readAnnouncements);
+    $_SESSION['unread_announcements'] = count($unreadAnnouncements);
+  }
+  return $result;
 }

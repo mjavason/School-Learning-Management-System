@@ -47,7 +47,7 @@ if (isset($_SESSION['ultra_log'])) {
         <?php require_once('includes/header.php') ?>
 
         <div role="main" class="main">
-            <div class="container position-relative py-5" style="" id="home">
+            <div class="container position-relative py-5" id="home">
                 <div class="row align-items-center py-5 mt-5 p-relative z-index-1">
                     <h1 class="card-title mb-2 font-weight-bold transition-2ms">CGPA Round Up [<?= getGPAPerStudent($_SESSION['student_reg']) ?>] <a href="#" class="btn btn-primary btn-with-arrow mb-2" href="#">Download<span><i class="fas fa-download"></i></span></a></h1>
                     <div class="col-lg-6">

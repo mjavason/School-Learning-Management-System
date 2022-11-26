@@ -115,4 +115,15 @@ echo '<pre>';
 // $courseId = 1;
 // print_r(checkIfCourseSessionExistsAndReturnInfo($courseId));
 
-print_r(getAllAnnouncementsForAllStudentsCourses($_SESSION['student_reg']));
+// $allAnnouncements = getAllAnnouncementsForStudent($_SESSION['student_reg']);
+// $sortedAnnouncements = getReadOrUnreadAnnouncements($allAnnouncements, $_SESSION['student_id']);
+
+// print_r($sortedAnnouncements);
+
+// $viewers = '[]';
+// if(markAnnouncementRead(2, $viewers)){
+//     echo 'successful';
+// }
+
+$courseInfo = getCourseInfo(1, 2);
+$views = $courseInfo['viewers'];

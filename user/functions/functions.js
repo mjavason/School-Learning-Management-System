@@ -989,6 +989,31 @@ function registerCourse(url, dataRequest) {
         });
 }
 
+function toggleFullMessage(url, title) {
+    dataRequest = '';
+    $.post(url,   // url
+        function (data, status, jqXHR) {// success callback
+            console.log(data);
+            if (data != 'error') {
+                swal(data, {
+                    title: title,
+                    icon: "info"
+                });
+
+            } else {
+                swal("Unknown error occured", {
+                    title: 'Error',
+                    icon: "error"
+                });
+            }
+            //dataParsed[0].success
+
+            //text: dataParsed[0].error
+
+
+        })
+}
+
 // function dollarFormat(number) {
 //     //window.alert('This naira format function is working');
 //     console.log('inside dollarFormat function');
