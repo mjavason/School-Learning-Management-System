@@ -115,15 +115,25 @@ echo '<pre>';
 // $courseId = 1;
 // print_r(checkIfCourseSessionExistsAndReturnInfo($courseId));
 
-// $allAnnouncements = getAllAnnouncementsForStudent($_SESSION['student_reg']);
-// $sortedAnnouncements = getReadOrUnreadAnnouncements($allAnnouncements, $_SESSION['student_id']);
+$announcements = getAllAnnouncementsForStudent($_SESSION['student_reg']);
+$readAnnouncements = getReadOrUnreadAnnouncements($announcements, 1);
+$unreadAnnouncements = getReadOrUnreadAnnouncements($announcements, 1, true);
 
-// print_r($sortedAnnouncements);
+print_r($unreadAnnouncements);
 
 // $viewers = '[]';
 // if(markAnnouncementRead(2, $viewers)){
 //     echo 'successful';
 // }
 
-$courseInfo = getCourseInfo(1, 2);
-$views = $courseInfo['viewers'];
+// $courseInfo = getCourseInfo(1, 2);
+// $views = $courseInfo['viewers'];
+
+$announcement = getAnnouncementInfo(1);
+$views = json_decode($announcement['viewers'], true);
+if (hasStudentViewed(1, $views)) {
+    echo "Message has been read by this user";
+} else {
+    echo 'Message not read yet';
+}
+// print_r($announcement);

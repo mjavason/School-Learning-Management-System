@@ -906,16 +906,26 @@ function getReadOrUnreadAnnouncements($allAnnouncements, $studentId, $unread = n
   $readAnnouncements = [];
   $unreadAnnouncements = [];
 
-  foreach ($allAnnouncements as $annoucement) {
-    if (!empty($annoucement['viewers'])) {
-      $views = json_decode($annoucement['viewers'], true);
+  foreach ($allAnnouncements as $announcement) {
+    // echo '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>1';
+    // echo '<br>';
+    if (!empty($announcement['viewers'])) {
+      // echo '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>2';
+      // echo '<br>';
+      $views = json_decode($announcement['viewers'], true);
       if (hasStudentViewed($studentId, $views)) {
-        array_push($readAnnouncements, $annoucement);
+        // echo '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>3';
+        // echo '<br>';
+        array_push($readAnnouncements, $announcement);
       } else {
-        array_push($unreadAnnouncements, $annoucement);
+        // echo '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>3.2';
+        // echo '<br>';
+        array_push($unreadAnnouncements, $announcement);
       }
     } else {
-      array_push($unreadAnnouncements, $annoucement);
+      // echo '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>4';
+      // echo '<br>';
+      array_push($unreadAnnouncements, $announcement);
     }
   }
 
@@ -928,18 +938,19 @@ function getReadOrUnreadAnnouncements($allAnnouncements, $studentId, $unread = n
 
 function hasStudentViewed($studentId, $viewArray)
 {
-  if(!empty($viewArray)){
+  // print_r($viewArray);
+  if (!empty($viewArray) && isset($viewArray[0])) {
     foreach ($viewArray as $view) {
-    if (isset($view['id'])) {
-      if ($view['id'] == $studentId) {
-        return true;
+      if (isset($view['id'])) {
+        if ($view['id'] == $studentId) {
+          return true;
+        }
+      } else {
+        return false;
       }
-    } else {
-      return false;
     }
   }
-  }
-  
+
   return false;
 }
 
@@ -956,6 +967,21 @@ function getAnnouncementInfo($id)
   global $db_handle;
   //$response = [];
   $result = $db_handle->selectAllWhere('announcements', 'id', $id);
+
+  if (isset($result)) {
+    // //createLog('Success', 'getStudentName');
+    return ($result[0]);
+  } else {
+    // //createLog('Failed', 'getStudentName');
+    return false;
+  }
+}
+
+function getLecturerInfo($id)
+{
+  global $db_handle;
+  //$response = [];
+  $result = $db_handle->selectAllWhere('lecturers', 'id', $id);
 
   if (isset($result)) {
     // //createLog('Success', 'getStudentName');

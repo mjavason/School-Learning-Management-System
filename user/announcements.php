@@ -49,7 +49,8 @@ if (isset($_SESSION['ultra_log'])) {
                     $unreadAnnouncements = getReadOrUnreadAnnouncements($announcements, $_SESSION['student_id'], true);
 
                     foreach ($unreadAnnouncements as $uAnnouncement) {
-                        $courseInfo = getCourseInfo($uAnnouncement['course_id'])
+                        $courseInfo = getCourseInfo($uAnnouncement['course_id']);
+                        $lecturerInfo = getLecturerInfo($uAnnouncement['lecturer_id']);
                     ?>
                         <div class="col-md-6 p-1 col-lg-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
                             <div class="card bg-color-grey card-text-color-hover-light border-0 bg-color-hover-primary transition-2ms box-shadow-1 box-shadow-1-primary box-shadow-1-hover">
@@ -64,6 +65,8 @@ if (isset($_SESSION['ultra_log'])) {
                                         Course: <?= $courseInfo['course_name'] . ' [' . $courseInfo['course_code'] . ']' ?>
                                         <br>
                                         Date: <?= formatDateFriendlier($uAnnouncement['date_updated']) ?>
+                                        <br>
+                                        By: <strong><?= $lecturerInfo['first_name'].' '.$lecturerInfo['last_name'] ?></strong>
                                     </div>
                                 </a>
                             </div>
@@ -76,7 +79,8 @@ if (isset($_SESSION['ultra_log'])) {
 
 
                     foreach ($readAnnouncements as $rAnnouncement) {
-                        $courseInfo = getCourseInfo($rAnnouncement['course_id'])
+                        $courseInfo = getCourseInfo($rAnnouncement['course_id']);
+                        $lecturerInfo2 = getLecturerInfo($rAnnouncement['lecturer_id']);
                     ?>
                         <div onclick="toggleFullMessage('functions/toggleFullMessage?announcement_id=<?= $rAnnouncement['id'] ?>', '<?= $rAnnouncement['title'] ?>')" class="col-md-6 p-1 col-lg-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
                             <div class="card bg-color-grey card-text-color-hover-light border-0 bg-color-hover-primary transition-2ms box-shadow-1 box-shadow-1-primary box-shadow-1-hover">
@@ -91,6 +95,8 @@ if (isset($_SESSION['ultra_log'])) {
                                         Course: <?= $courseInfo['course_name'] . ' [' . $courseInfo['course_code'] . ']' ?>
                                         <br>
                                         Date: <?= formatDateFriendlier($rAnnouncement['date_updated']) ?>
+                                        <br>
+                                        By: <strong><?= $lecturerInfo['first_name'].' '.$lecturerInfo2['last_name'] ?></strong>
                                     </div>
                                 </a>
                             </div>
