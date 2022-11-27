@@ -11,6 +11,12 @@ if (isset($_SESSION['super_log'])) {
 if (isset($_SESSION['ultra_log'])) {
     gotoPage("../super_admin/index");
 }
+
+$materials = getAllMaterialsForStudent($_SESSION['student_reg']);
+$materialCount = 0;
+if (!empty($materials)) {
+    $materialCount = count($materials);
+}
 ?>
 <!DOCTYPE html>
 
@@ -41,11 +47,10 @@ if (isset($_SESSION['ultra_log'])) {
             <div class="container position-relative py-5" style="min-height: 643px;" id="home">
                 <?php require_once('includes/svg_animation.php') ?>
                 <div class="row align-items-center py-5 mt-5 p-relative z-index-1">
-                    <h1 class="card-title mb-2 font-weight-bold transition-2ms">All Course Materials</h1>
+                    <h1 class="card-title mb-2 font-weight-bold transition-2ms">All Course Materials [<?= $materialCount ?>]</h1>
 
                     <div class="material_head">
                         <?php
-                        $materials = getAllMaterialsForStudent($_SESSION['student_reg']);
 
                         if (!empty($materials)) {
                             foreach ($materials as $material) {
