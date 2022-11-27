@@ -890,11 +890,12 @@ function getAllAnnouncementsForStudent($studentReg)
   global $db_handle;
   //$response = [];
   foreach ($coursesTaken as $course) {
-    if (isset($course['result_id']) && isset($course['course_id']))
+    if (isset($course['result_id']) && isset($course['course_id'])) {
       $result = $db_handle->selectAllWhereWith2Conditions('announcements', 'result_id', $course['result_id'], 'course_id', $course['course_id']);
-    if ($result) {
-      foreach ($result as $announcement) {
-        array_push($allAnnouncementsForAllStudentCourses, $announcement);
+      if ($result) {
+        foreach ($result as $announcement) {
+          array_push($allAnnouncementsForAllStudentCourses, $announcement);
+        }
       }
     }
   }
