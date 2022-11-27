@@ -129,11 +129,14 @@ print_r($unreadAnnouncements);
 // $courseInfo = getCourseInfo(1, 2);
 // $views = $courseInfo['viewers'];
 
-$announcement = getAnnouncementInfo(1);
-$views = json_decode($announcement['viewers'], true);
-if (hasStudentViewed(1, $views)) {
+$announcementInfo = getAnnouncementInfo(2);
+$viewers = json_decode($announcementInfo['viewers'], true);
+if (hasStudentViewed(1, $viewers)) {
     echo "Message has been read by this user";
 } else {
     echo 'Message not read yet';
+    $newViewer = array('id' => $_SESSION['student_id']);
+    array_push($viewers, $newViewer);
+    markAnnouncementRead($announcementInfo['id'], $viewers);
 }
 // print_r($announcement);

@@ -11,24 +11,19 @@ if (!isset($_GET['announcement_id'])) {
         case (!empty($announcement_id)):
             $announcementInfo = getAnnouncementInfo($announcement_id);
             $viewers = json_decode($announcementInfo['viewers'], true);
-            if (empty($viewers)) {
-                $viewers = [];
-            }
 
             if ($announcementInfo) {
-                if (!empty($viewers)  && isset($viewers[0])) {
-                    if (!hasStudentViewed($_SESSION['student_id'], $viewers)) {
-                        $newViewer = array('id' => $_SESSION['student_id']);
-                        array_push($viewers, $newViewer);
-                        markAnnouncementRead($announcementInfo['id'], $viewers);
+                if (!hasStudentViewed($_SESSION['student_id'], $viewers)) {
+                    $newViewer = array('id' => $_SESSION['student_id']);
+                    array_push($viewers, $newViewer);
+                    markAnnouncementRead($announcementInfo['id'], $viewers);
 
-                        $announcements = getAllAnnouncementsForStudent($_SESSION['student_reg']);
-                        $readAnnouncements = getReadOrUnreadAnnouncements($announcements, $_SESSION['student_id']);
-                        $unreadAnnouncements = getReadOrUnreadAnnouncements($announcements, $_SESSION['student_id'], true);
+                    $announcements = getAllAnnouncementsForStudent($_SESSION['student_reg']);
+                    $readAnnouncements = getReadOrUnreadAnnouncements($announcements, $_SESSION['student_id']);
+                    $unreadAnnouncements = getReadOrUnreadAnnouncements($announcements, $_SESSION['student_id'], true);
 
-                        $_SESSION['read_announcemts'] = count($readAnnouncements);
-                        $_SESSION['unread_announcements'] = count($unreadAnnouncements);
-                    }
+                    $_SESSION['read_announcemts'] = count($readAnnouncements);
+                    $_SESSION['unread_announcements'] = count($unreadAnnouncements);
                 }
 
 

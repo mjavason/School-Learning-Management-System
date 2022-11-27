@@ -96,7 +96,7 @@ if (isset($_SESSION['ultra_log'])) {
                                         <br>
                                         Date: <?= formatDateFriendlier($rAnnouncement['date_updated']) ?>
                                         <br>
-                                        By: <strong><?= $lecturerInfo['first_name'].' '.$lecturerInfo2['last_name'] ?></strong>
+                                        By: <strong><?= $lecturerInfo2['first_name'].' '.$lecturerInfo2['last_name'] ?></strong>
                                     </div>
                                 </a>
                             </div>
