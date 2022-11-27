@@ -18,7 +18,7 @@
 								<nav class="collapse">
 									<ul class="nav nav-pills" id="mainNav">
 										<li class="dropdown">
-											<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="index">Home</a>
+											<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="index">Results</a>
 										</li>
 										<?php if (isset($_SESSION['log'])) { ?>
 											<li class="dropdown">
