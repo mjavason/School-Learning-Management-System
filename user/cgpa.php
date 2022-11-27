@@ -139,11 +139,19 @@ if (isset($_SESSION['ultra_log'])) {
                                     $studentStarterYear = date('Y') - $studentLevel;
 
                                     $gradePercentages = getGradePercentageOccurencePerStudent($_SESSION['student_reg']);
-                                    $aPercentage = ($gradePercentages[0]['A'] / $gradePercentages[0]['total']) * 100;
-                                    $bPercentage = ($gradePercentages[0]['B'] / $gradePercentages[0]['total']) * 100;
-                                    $cPercentage = ($gradePercentages[0]['C'] / $gradePercentages[0]['total']) * 100;
-                                    $dPercentage = ($gradePercentages[0]['D'] / $gradePercentages[0]['total']) * 100;
-                                    $fPercentage = ($gradePercentages[0]['F'] / $gradePercentages[0]['total']) * 100;
+                                    if ($gradePercentages[0]['total'] == 0) {
+                                        $aPercentage = 0;
+                                        $bPercentage = 0;
+                                        $cPercentage = 0;
+                                        $dPercentage = 0;
+                                        $fPercentage = 0;
+                                    } else {
+                                        $aPercentage = ($gradePercentages[0]['A'] / $gradePercentages[0]['total']) * 100;
+                                        $bPercentage = ($gradePercentages[0]['B'] / $gradePercentages[0]['total']) * 100;
+                                        $cPercentage = ($gradePercentages[0]['C'] / $gradePercentages[0]['total']) * 100;
+                                        $dPercentage = ($gradePercentages[0]['D'] / $gradePercentages[0]['total']) * 100;
+                                        $fPercentage = ($gradePercentages[0]['F'] / $gradePercentages[0]['total']) * 100;
+                                    }
                                     ?>
                                     <span class="pieLabel" id="pieLabel0" style="position: absolute; top: 196px; left: 356.217px;">
                                         <div style="font-size:x-small;text-align:center;padding:2px;color:#0088cc;">A<br><?= $aPercentage ?>%</div>

@@ -426,7 +426,12 @@ function getCoursesTakenByStudent($regNo)
 
   if (isset($result)) {
     $coursesTaken = json_decode($result[0]['courses_taken'], true);
-    sort($coursesTaken,);
+    if (!empty($coursesTaken)) {
+      sort($coursesTaken);
+    } else {
+      return [];
+    }
+
 
     return $coursesTaken;
   } else {

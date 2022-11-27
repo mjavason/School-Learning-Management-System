@@ -44,9 +44,13 @@
 										<li class="dropdown">
 											<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="#">Solutions</a>
 										</li> -->
-										<li class="dropdown">
+
+
+										<!-- <li class="dropdown">
 											<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="test">Test PHP</a>
-										</li>
+										</li> -->
+
+										
 										<?php if (!isset($_SESSION['log'])) { ?>
 											<li class="dropdown">
 												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="register">Register</a>
