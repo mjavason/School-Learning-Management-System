@@ -1098,6 +1098,17 @@ function toggleFullMessage(url, title) {
         })
 }
 
+function showAlert(message, description) {
+    swal({
+        //title: "New Course",
+        title: message,
+        icon: "warning",
+        //text: "Error: " + dataParsed[0].error
+        text: description
+        //button: "Got It!",
+    });
+}
+
 // function dollarFormat(number) {
 //     //window.alert('This naira format function is working');
 //     console.log('inside dollarFormat function');

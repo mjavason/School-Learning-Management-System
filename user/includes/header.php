@@ -37,6 +37,12 @@
 											<li class="dropdown">
 												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="course-materials">Materials</a>
 											</li>
+											<li class="dropdown">
+												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" onclick="showAlert('Coming Soon!','Feature Still In Construction')">Settings</a>
+											</li>
+											<li class="dropdown">
+												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" onclick="showAlert('Coming Soon!','Feature Still In Construction')">Departmental Fees</a>
+											</li>
 										<?php } ?>
 										<!-- <li class="dropdown">
 											<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="#">About</a>
@@ -50,7 +56,7 @@
 											<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="test">Test PHP</a>
 										</li> -->
 
-										
+
 										<?php if (!isset($_SESSION['log'])) { ?>
 											<li class="dropdown">
 												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="register">Register</a>
