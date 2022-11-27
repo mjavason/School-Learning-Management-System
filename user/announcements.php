@@ -41,7 +41,7 @@ if (isset($_SESSION['ultra_log'])) {
             <div class="container position-relative py-5" style="min-height: 643px;" id="home">
                 <?php require_once('includes/svg_animation.php') ?>
                 <div class="row align-items-center py-5 mt-5 p-relative z-index-1">
-                    <h1 class="card-title mb-2 font-weight-bold transition-2ms">View All Announcements</h1>
+                    <h1 class="card-title mb-2 font-weight-bold transition-2ms">All Announcements</h1>
 
                     <?php
                     $announcements = getAllAnnouncementsForStudent($_SESSION['student_reg']);

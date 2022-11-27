@@ -33,9 +33,9 @@
 													<span class="badge badge-primary m-1"><?= $_SESSION['unread_announcements'] ?></span>
 													<?php } ?>
 												</a>
-
-											
-
+											</li>
+											<li class="dropdown">
+												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="course-materials">Materials</a>
 											</li>
 										<?php } ?>
 										<!-- <li class="dropdown">

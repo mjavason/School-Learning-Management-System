@@ -1010,3 +1010,23 @@ function markAnnouncementRead($announcement_id, $updatedViewers)
   }
   return $result;
 }
+
+function getAllMaterialsForStudent($studentReg)
+{
+  $coursesTaken = getCoursesTakenByStudent($studentReg);
+  $allMaterialsForAllStudentCourses = [];
+
+  global $db_handle;
+  //$response = [];
+  foreach ($coursesTaken as $course) {
+    if (isset($course['result_id']) && isset($course['course_id'])) {
+      $result = $db_handle->selectAllWhereWith2Conditions('course_materials', 'result_id', $course['result_id'], 'course_id', $course['course_id']);
+      if ($result) {
+        foreach ($result as $material) {
+          array_push($allMaterialsForAllStudentCourses, $material);
+        }
+      }
+    }
+  }
+  return $allMaterialsForAllStudentCourses;
+}

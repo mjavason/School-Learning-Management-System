@@ -899,6 +899,90 @@ var myFilterBox2 = addFilterBox({
     useDomFilter: false
 });
 
+var myFilterBox3 = addFilterBox({
+    target: {
+        selector: '.material_head',
+        items: '.materials1 .materials2 .materials3',
+        sources: [
+            '.material_title',
+            '.material_category',
+            '.material_course',
+            '.material_date',
+            '.material_lecturer'
+        ]
+    },
+    addTo: {
+        selector: '.material_head',
+        position: 'before'
+    },
+    input: {
+        label: 'Search: ',
+        attrs: {
+            class: 'form-control',
+            placeholder: '*Calculus and Geometry **Textbook **Computer Engineering **Nov-2022 **Orji Michael'
+        }
+    },
+    // wrapper: {
+    //     tag: 'div',
+    //     attrs: {
+    //         class: 'filterbox-wrap'
+    //     }
+    // },
+    displays: {
+        counter: {
+            tag: 'span',
+            attrs: {
+                class: 'counter'
+            },
+            addTo: {
+                selector: '.filterbox-wrap',
+                position: 'append'
+            },
+            text: function () {
+                return '<strong>' + this.countVisible() + '</strong>/' + this.countTotal();
+            }
+        },
+        noresults: {
+            tag: 'div',
+            addTo: {
+                selector: '.course_head',
+                position: 'after'
+            },
+            attrs: {
+                class: 'no-results'
+            },
+            text: function () {
+                return !this.countVisible() ? 'No matching course code or title for "' + this.getFilter() + '".' : '';
+            }
+        }
+    },
+    callbacks: {
+        onReady: onFilterBoxReady,
+        afterFilter: function () {
+            this.toggleHide(this.getTarget(), this.isAllItemsHidden());
+        },
+        onEnter: function () {
+            var $firstItem = this.getFirstVisibleItem();
+
+            if ($firstItem) {
+                alert('First visible item: ' + $firstItem.querySelector('td').textContent + '\n(onEnter callback)');
+            }
+        }
+    },
+    highlight: {
+        style: 'background: #FFD662',
+        minChar: 1
+    },
+    filterAttr: 'data-filter',
+    suffix: '-mysuffix',
+    debuglevel: 2,
+    inputDelay: 100,
+    zebra: true,
+    enableObserver: true,
+    initTableColumns: true,
+    useDomFilter: false
+});
+
 function onFilterBoxReady() {
     this.fixTableColumns(this.getTarget());
     // this.filter('bra');
