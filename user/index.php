@@ -2,38 +2,22 @@
 require_once('config/connect.php');
 require_once('functions/functions.php');
 
-$first_name = 'Michael';
-$last_name = 'Orji';
-$id = 1;
-$postemail = 'Orjimichael4886@gmail.com';
-$title = 'Master';
-$phone = '08148863871';
-$gender = 'Male';
-$department_id = 1;
-$staff_id_number  = '2240';
-$date_created = '2022-10-17';
-$date_updated = '2022-10-17';
-$set_year = '2017/2018';
-$reg_no = '2017030180311';
+// $first_name = 'Michael';
+// $last_name = 'Orji';
+// $id = 1;
+// $postemail = 'Orjimichael4886@gmail.com';
+// $title = 'Master';
+// $phone = '08148863871';
+// $gender = 'Male';
+// $department_id = 1;
+// $staff_id_number  = '2240';
+// $date_created = '2022-10-17';
+// $date_updated = '2022-10-17';
+// $set_year = '2017/2018';
+// $reg_no = '2017030180311';
 
-$_SESSION['user_name'] = ucwords(strtolower($first_name)) . " " . ucwords(strtolower($last_name));
-$_SESSION['first_name'] = $first_name;
-$_SESSION['last_name'] = $last_name;
-$_SESSION['full_name'] = $first_name . ' ' . $last_name;
-$_SESSION['student_id'] = $id;
-$_SESSION['student_email'] = $postemail;
-$_SESSION['student_set'] = $set_year;
-$_SESSION['phone'] = $phone;
-$_SESSION['student_reg'] = $reg_no;
 
-$announcements = getAllAnnouncementsForStudent($_SESSION['student_reg']);
-$readAnnouncements = getReadOrUnreadAnnouncements($announcements, $_SESSION['student_id']);
-$unreadAnnouncements = getReadOrUnreadAnnouncements($announcements, $_SESSION['student_id'], true);
 
-$_SESSION['read_announcemts'] = count($readAnnouncements);
-$_SESSION['unread_announcements'] = count($unreadAnnouncements);
-
-$_SESSION['log'] = true;
 
 if (isset($_SESSION['log'])) {
 	gotoPage("dashboard.php");
@@ -244,9 +228,17 @@ if (isset($_SESSION['ultra_log'])) {
 // $_SESSION['student_email'] = $postemail;
 // $_SESSION['student_set'] = $set_year;
 // $_SESSION['phone'] = $phone;
-// $_SESSION['student_reg'] = $row['reg_no'];
+// $_SESSION['student_reg'] = $reg_no;
+
+// $announcements = getAllAnnouncementsForStudent($_SESSION['student_reg']);
+// $readAnnouncements = getReadOrUnreadAnnouncements($announcements, $_SESSION['student_id']);
+// $unreadAnnouncements = getReadOrUnreadAnnouncements($announcements, $_SESSION['student_id'], true);
+
+// $_SESSION['read_announcemts'] = count($readAnnouncements);
+// $_SESSION['unread_announcements'] = count($unreadAnnouncements);
 
 // $_SESSION['log'] = true;
+
 
 #endregion
 ?>
