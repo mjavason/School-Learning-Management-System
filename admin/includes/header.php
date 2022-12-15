@@ -43,7 +43,7 @@
                         <span>Lecturer</span>
                     </div>
                     <div class="admin-img">
-                        <img src="img/figure/<?= displayGenericProfileImage($_SESSION['lecturer_gender']) ?>" alt="Admin">
+                        <img src="img/figure/<?= displayGenericProfileImageSmall($_SESSION['lecturer_gender']) ?>" alt="Admin">
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">

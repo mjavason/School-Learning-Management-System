@@ -1295,9 +1295,18 @@ function getAnnouncementInfo($id)
 function displayGenericProfileImage($gender)
 {
   if ($gender == 'Male') {
-    return 'user.jpg';
+    return 'user3.jpg';
   } else {
     return 'student1.jpg';
+  }
+}
+
+function displayGenericProfileImageSmall($gender)
+{
+  if ($gender == 'Male') {
+    return 'student5.png';
+  } else {
+    return 'student3.png';
   }
 }
 
