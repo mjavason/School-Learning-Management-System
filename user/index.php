@@ -13,22 +13,27 @@ $department_id = 1;
 $staff_id_number  = '2240';
 $date_created = '2022-10-17';
 $date_updated = '2022-10-17';
+$set_year = '2017/2018';
+$reg_no = '2017030180311';
 
 $_SESSION['user_name'] = ucwords(strtolower($first_name)) . " " . ucwords(strtolower($last_name));
 $_SESSION['first_name'] = $first_name;
 $_SESSION['last_name'] = $last_name;
 $_SESSION['full_name'] = $first_name . ' ' . $last_name;
-$_SESSION['lecturer_id'] = $id;
-$_SESSION['lecturer_email'] = $postemail;
-$_SESSION['lecturer_title'] = $title;
+$_SESSION['student_id'] = $id;
+$_SESSION['student_email'] = $postemail;
+$_SESSION['student_set'] = $set_year;
 $_SESSION['phone'] = $phone;
-$_SESSION['lecturer_gender'] = $gender;
-$_SESSION['lecturer_department'] = $department_id;
-$_SESSION['staff_id_number'] = $staff_id_number;
-$_SESSION['date_created'] = $date_created;
-$_SESSION['date_updated'] = $date_updated;
+$_SESSION['student_reg'] = $reg_no;
 
-$_SESSION['super_log'] = true;
+$announcements = getAllAnnouncementsForStudent($_SESSION['student_reg']);
+$readAnnouncements = getReadOrUnreadAnnouncements($announcements, $_SESSION['student_id']);
+$unreadAnnouncements = getReadOrUnreadAnnouncements($announcements, $_SESSION['student_id'], true);
+
+$_SESSION['read_announcemts'] = count($readAnnouncements);
+$_SESSION['unread_announcements'] = count($unreadAnnouncements);
+
+$_SESSION['log'] = true;
 
 if (isset($_SESSION['log'])) {
 	gotoPage("dashboard.php");
@@ -205,6 +210,8 @@ if (isset($_SESSION['ultra_log'])) {
 // $date_created = '2022-10-17';
 // $date_updated = '2022-10-17';
 
+#region simulating lecturer login
+
 // $_SESSION['user_name'] = ucwords(strtolower($first_name)) . " " . ucwords(strtolower($last_name));
 // $_SESSION['first_name'] = $first_name;
 // $_SESSION['last_name'] = $last_name;
@@ -220,4 +227,26 @@ if (isset($_SESSION['ultra_log'])) {
 // $_SESSION['date_updated'] = $date_updated;
 
 // $_SESSION['super_log'] = true;
+
+#endregion
+
+
+
+
+
+#region simulating student side
+
+// $_SESSION['user_name'] = ucwords(strtolower($first_name)) . " " . ucwords(strtolower($last_name));
+// $_SESSION['first_name'] = $first_name;
+// $_SESSION['last_name'] = $last_name;
+// $_SESSION['full_name'] = $first_name . ' ' . $last_name;
+// $_SESSION['student_id'] = $id;
+// $_SESSION['student_email'] = $postemail;
+// $_SESSION['student_set'] = $set_year;
+// $_SESSION['phone'] = $phone;
+// $_SESSION['student_reg'] = $row['reg_no'];
+
+// $_SESSION['log'] = true;
+
+#endregion
 ?>
