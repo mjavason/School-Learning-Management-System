@@ -18,23 +18,47 @@ if (!isset($_SESSION['ultra_log'])) {
     <title>#S##@@U@#@P#**E*@#R$@#!@$#@$%#@ AdMin</title>
 </head>
 <style>
-    h1 {
+    * {
         text-align: center;
-        margin-top: 22%;
-    }
-    a{
-        display: block;
+        box-sizing: border-box;
+        margin: 0;
+        padding:0;
     }
 
-    h1 a{
-        font-size: 1.2rem;
+    .header {
+        margin-bottom: 2rem;
+        margin-top: 12%;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    li {
+        margin: 10px;
     }
 </style>
 
 <body>
+    <div class="header">
+        <h1>Welcome To The Matrix</h1>
+        <strong>"With great power, comes great responsibility."<br> ~Ben Parker</strong>
+    </div>
+    <ul>
+        <li><a href="new-course">Create New Course</a></li>
+        <li><a href="assign-lecturer-course">Assign Course To Lecturer</a></li>
+        <li><a href="edit-lecturer">Edit Lecturer Info</a></li>
+        <li><a href="edit-student">Edit Student Info</a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
 
-    <h1>Welcome To The Matrix <a href="functions/logout.php">Leave</a></h1>
-   
+        <br>
+        <li><a href="functions/logout.php">Leave</a></li>
+    </ul>
+
+
 </body>
 
 </html>
