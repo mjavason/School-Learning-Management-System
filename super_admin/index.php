@@ -22,7 +22,7 @@ if (!isset($_SESSION['ultra_log'])) {
         text-align: center;
         box-sizing: border-box;
         margin: 0;
-        padding:0;
+        padding: 0;
     }
 
     .header {
@@ -45,10 +45,14 @@ if (!isset($_SESSION['ultra_log'])) {
         <strong>"With great power, comes great responsibility."<br> ~Ben Parker</strong>
     </div>
     <ul>
-        <li><a href="new-course">Create New Course</a></li>
+        <li><a href="create-course">Create New Course</a></li>
+        <li><a href="create-lecturer">Create New Lecturer</a></li>
+
         <li><a href="assign-lecturer-course">Assign Course To Lecturer</a></li>
+        <li><a href="edit-course">Edit Course</a></li>
         <li><a href="edit-lecturer">Edit Lecturer Info</a></li>
         <li><a href="edit-student">Edit Student Info</a></li>
+
         <li><a href=""></a></li>
         <li><a href=""></a></li>
         <li><a href=""></a></li>
