@@ -16,42 +16,9 @@ if (!isset($_SESSION['ultra_log'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>#S##@@U@#@P#**E*@#R$@#!@$#@$%#@ AdMin</title>
+    <link rel="stylesheet" href="includes/style.css">
+
 </head>
-<style>
-    body {
-        margin-top: 7%;
-        margin-bottom: 2rem;
-    }
-
-    * {
-        text-align: center;
-        box-sizing: border-box;
-        margin: 0;
-    }
-
-    .header {
-        margin-bottom: 2rem;
-    }
-
-    ul {
-        list-style: none;
-    }
-
-    li {
-        margin: 10px;
-    }
-
-    .p-1 {
-        padding: 10px;
-    }
-
-    .form-control input,
-    .form-control select {
-        width: 60%;
-        text-align: left;
-        height: 2rem;
-    }
-</style>
 
 <body>
     <div class="header">
@@ -63,7 +30,9 @@ if (!isset($_SESSION['ultra_log'])) {
         <form action="functions/editLecturer.php" method="POST">
             <div class="p-1 form-control">
                 <label>Select Student</label><br>
-                <input type="text" placeholder="**Orji Michael **2017030180311" required>
+                <input onkeyup='simpleAsyncSearch("functions/suggestStudent", "student_search_input", "suggestion_list1","updateStudentButton")' id="student_search_input" type="text" placeholder="**Orji Michael **2017030180311 **08148863871 **Orjimichael4886@gmail.com" required>
+                <ul id="suggestion_list1">
+                </ul>
             </div>
             <br>
             <hr>
@@ -84,21 +53,26 @@ if (!isset($_SESSION['ultra_log'])) {
                     <option value="Female">Female</option>
                 </select>
             </div>
-            <div class="p-1 form-control">
+            <!-- <div class="p-1 form-control">
                 <label>Reg No</label><br>
                 <input type="text" placeholder="**39434873290" required>
-            </div>
+            </div> -->
             <div class="p-1 form-control">
                 <label>Department</label><br>
-                <input type="text" placeholder="**39434873290" required>
+                <input onkeyup='simpleAsyncSearch("functions/suggestDept", "department_search_input", "suggestion_list","newCourseButton")' id="department_search_input" type="text" placeholder="**Computer Engineering" required>
+                <ul id="suggestion_list">
+                </ul>
             </div>
 
 
-            <input type="submit" value="Save">
+            <input type="submit" id="newCourseButton" value="Save">
         </form>
     </div>
 
-
+    <!-- JS Includes -->
+    <?php
+    require_once('includes/js_includes.php')
+    ?>
 </body>
 
 </html>

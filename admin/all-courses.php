@@ -105,9 +105,7 @@ if (!isset($_SESSION['super_log'])) {
                                                                 </td>
                                                                 <td><?= $courseInfo['course_code'] ?></td>
                                                                 <td><?= $courseInfo['course_name'] ?></td>
-                                                                <!-- <td><?= $course['course_credits'] ?></td>
-                                                            <td><?= $course['course_level'] ?></td>
-                                                            <td><?= $course['year_taken'] ?></td> -->
+                                                              
                                                                 <td>
                                                                     <div class="dropdown">
                                                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

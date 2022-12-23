@@ -16,41 +16,10 @@ if (!isset($_SESSION['ultra_log'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>#S##@@U@#@P#**E*@#R$@#!@$#@$%#@ AdMin</title>
+    <link rel="stylesheet" href="includes/style.css">
+
 </head>
-<style>
-    * {
-        text-align: center;
-        box-sizing: border-box;
-        margin: 0;
-    }
 
-    .header {
-        margin-bottom: 2rem;
-        margin-top: 7%;
-    }
-
-    ul {
-        list-style: none;
-    }
-
-    li {
-        margin: 10px;
-    }
-
-    .p-1 {
-        padding: 10px;
-    }
-
-    .form-control input, .form-control select {
-        width: 60%;
-        text-align: left;
-        height: 2rem;
-    }
-
-    form{
-        margin-bottom: 2rem;
-    }
-</style>
 
 <body>
     <div class="header">
@@ -85,13 +54,19 @@ if (!isset($_SESSION['ultra_log'])) {
             </div>
             <div class="p-1 form-control">
                 <label>Department</label><br>
-                <input type="text" placeholder="**Computer Engineering" required>
+                <input onkeyup='simpleAsyncSearch("functions/suggestDept", "department_search_input", "suggestion_list","newCourseButton")' id="department_search_input" type="text" placeholder="**Computer Engineering" required>
+                <ul id="suggestion_list">
+                </ul>
             </div>
 
-            <input type="submit" value="Create">
+            <input type="submit" disabled id="newCourseButton" value="Create">
         </form>
     </div>
 
+     <!-- JS Includes -->
+     <?php 
+    require_once('includes/js_includes.php')
+    ?>
 </body>
 
 </html>

@@ -16,37 +16,9 @@ if (!isset($_SESSION['ultra_log'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>#S##@@U@#@P#**E*@#R$@#!@$#@$%#@ AdMin</title>
+    <link rel="stylesheet" href="includes/style.css">
+
 </head>
-<style>
-    * {
-        text-align: center;
-        box-sizing: border-box;
-        margin: 0;
-    }
-
-    .header {
-        margin-bottom: 2rem;
-        margin-top: 7%;
-    }
-
-    ul {
-        list-style: none;
-    }
-
-    li {
-        margin: 10px;
-    }
-
-    .p-1 {
-        padding: 10px;
-    }
-
-    .form-control input {
-        width: 60%;
-        text-align: left;
-        height: 2rem;
-    }
-</style>
 
 <body>
     <div class="header">
@@ -58,7 +30,9 @@ if (!isset($_SESSION['ultra_log'])) {
         <form action="functions/editCourse.php" method="POST">
             <div class="p-1 form-control">
                 <label>Select Course</label><br>
-                <input type="text" placeholder="**CEE123  **Computer Engineering in Nigeria" required>
+                <input onkeyup='simpleAsyncSearch("functions/suggestCourse", "course_search_input", "suggestion_list2","updateCourseButton")' id="course_search_input" type="text" placeholder="**CEE123  **Computer Engineering in Nigeria" required>
+                <ul id="suggestion_list2">
+                </ul>
             </div>
             <br>
             <hr>
@@ -76,11 +50,14 @@ if (!isset($_SESSION['ultra_log'])) {
                 <input type="text" placeholder="**Computer Engineering" required>
             </div>
 
-            <input type="submit" value="Save">
+            <input type="submit" disabled id="assignToLecturerButton" value="Create">
         </form>
     </div>
 
-   
+    <!-- JS Includes -->
+    <?php 
+    require_once('includes/js_includes.php')
+    ?>
 </body>
 
 </html>

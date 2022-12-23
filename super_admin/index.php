@@ -45,10 +45,11 @@ if (!isset($_SESSION['ultra_log'])) {
         <strong>"With great power, comes great responsibility."<br> ~Ben Parker</strong>
     </div>
     <ul>
+        <li><a href="assign-lecturer-course">Assign Course To Lecturer</a></li>
+        
         <li><a href="create-course">Create New Course</a></li>
         <li><a href="create-lecturer">Create New Lecturer</a></li>
 
-        <li><a href="assign-lecturer-course">Assign Course To Lecturer</a></li>
         <li><a href="edit-course">Edit Course</a></li>
         <li><a href="edit-lecturer">Edit Lecturer Info</a></li>
         <li><a href="edit-student">Edit Student Info</a></li>
@@ -62,6 +63,7 @@ if (!isset($_SESSION['ultra_log'])) {
         <li><a href="functions/logout.php">Leave</a></li>
     </ul>
 
+  
 
 </body>
 
