@@ -30,7 +30,7 @@ if (!isset($_SESSION['ultra_log'])) {
         <form action="functions/editCourse.php" method="POST">
             <div class="p-1 form-control">
                 <label>Select Course</label><br>
-                <input onkeyup='simpleAsyncSearch("functions/suggestCourse", "course_search_input", "suggestion_list2","updateCourseButton")' id="course_search_input" type="text" placeholder="**CEE123  **Computer Engineering in Nigeria" required>
+                <input onkeyup='simpleAsyncSearch("functions/suggestCourse", "course_search_input", "suggestion_list2","assignToLecturerButton")' id="course_search_input" type="text" placeholder="**CEE123  **Computer Engineering in Nigeria" required>
                 <ul id="suggestion_list2">
                 </ul>
             </div>
@@ -47,7 +47,9 @@ if (!isset($_SESSION['ultra_log'])) {
             </div>
             <div class="p-1 form-control">
                 <label>New Course Department</label><br>
-                <input type="text" placeholder="**Computer Engineering" required>
+                <input onkeyup='simpleAsyncSearch("functions/suggestDept", "department_search_input", "suggestion_list","assignToLecturerButton")' id="department_search_input" type="text" placeholder="**Computer Engineering" required>
+                <ul id="suggestion_list">
+                </ul>
             </div>
 
             <input type="submit" disabled id="assignToLecturerButton" value="Create">
