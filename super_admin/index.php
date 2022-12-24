@@ -48,13 +48,14 @@ if (!isset($_SESSION['ultra_log'])) {
         <li><a href="assign-lecturer-course">Assign Course To Lecturer</a></li>
         
         <li><a href="create-course">Create New Course</a></li>
+        <li><a href="create-department">Create New Department</a></li>
         <li><a href="create-lecturer">Create New Lecturer</a></li>
 
-        <li><a href="edit-course">Edit Course</a></li>
+        <!-- <li><a href="edit-course">Edit Course</a></li>
         <li><a href="edit-lecturer">Edit Lecturer Info</a></li>
         <li><a href="edit-student">Edit Student Info</a></li>
 
-        <li><a href=""></a></li>
+        <li><a href="test.php">Testing Code</a></li> -->
         <li><a href=""></a></li>
         <li><a href=""></a></li>
         <li><a href=""></a></li>

@@ -29,13 +29,13 @@ if (!isset($_SESSION['ultra_log'])) {
         <form action="functions/assignCourseToLecturer.php" method="POST">
             <div class="p-1 form-control">
                 <label>Lecturer</label><br>
-                <input onkeyup='simpleAsyncSearch("functions/suggestLecturer", "lecturer_search_input", "suggestion_list1","assignToLecturerButton")' id="lecturer_search_input" type="text" placeholder="**Engr Ozor **Engrozor@gmail.com **32234234" required>
+                <input name="lecturer_email" onkeyup='simpleAsyncSearch("functions/suggestLecturer", "lecturer_search_input", "suggestion_list1","assignToLecturerButton")' id="lecturer_search_input" type="text" placeholder="**Engr Ozor **Engrozor@gmail.com **32234234" required>
                 <ul id="suggestion_list1">
                 </ul>
             </div>
             <div class="p-1 form-control">
                 <label>Course</label><br>
-                <input onkeyup='simpleAsyncSearch("functions/suggestCourse", "course_search_input", "suggestion_list2","assignToLecturerButton")' id="course_search_input" type="text" placeholder="**CEE123  **Computer Engineering in Nigeria" required>
+                <input name="course_name" onkeyup='simpleAsyncSearch("functions/suggestCourse", "course_search_input", "suggestion_list2","assignToLecturerButton")' id="course_search_input" type="text" placeholder="**CEE123  **Computer Engineering in Nigeria" required>
                 <ul id="suggestion_list2">
                 </ul>
             </div>

@@ -31,30 +31,30 @@ if (!isset($_SESSION['ultra_log'])) {
         <form action="functions/createLecturer.php" method="POST">
             <div class="p-1 form-control">
                 <label>First Name</label><br>
-                <input type="text" placeholder="**Michael" required>
+                <input name="first_name" type="text" placeholder="**Michael" required>
             </div>
             <div class="p-1 form-control">
                 <label>Last Name</label><br>
-                <input type="text" placeholder="**Orji" required>
+                <input name="last_name" type="text" placeholder="**Orji" required>
             </div>
             <div class="p-1 form-control">
                 <label>Gender</label><br>
-                <select>
+                <select name="gender">
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
             </div>
             <div class="p-1 form-control">
                 <label>Email</label><br>
-                <input type="email" placeholder="**michael123@mail.com" required>
+                <input name="email" type="email" placeholder="**michael123@mail.com" required>
             </div>
             <div class="p-1 form-control">
                 <label>Staff Id</label><br>
-                <input type="text" placeholder="**567438732" required>
+                <input name="staff_id" type="text" placeholder="**567438732" required>
             </div>
             <div class="p-1 form-control">
                 <label>Department</label><br>
-                <input onkeyup='simpleAsyncSearch("functions/suggestDept", "department_search_input", "suggestion_list","newCourseButton")' id="department_search_input" type="text" placeholder="**Computer Engineering" required>
+                <input name="department_name" onkeyup='simpleAsyncSearch("functions/suggestDept", "department_search_input", "suggestion_list","newCourseButton")' id="department_search_input" type="text" placeholder="**Computer Engineering" required>
                 <ul id="suggestion_list">
                 </ul>
             </div>

@@ -23,28 +23,22 @@ if (!isset($_SESSION['ultra_log'])) {
 
 <body>
     <div class="header">
-        <h1>Create Course</h1>
+        <h1>Create Department</h1>
         <strong>"And the lord said, let there be light, and there was light"<br> ~Genesis</strong>
     </div>
 
     <div>
-        <form action="functions/createCourse.php" method="POST">
+        <form action="functions/createDepartment.php" method="POST">
             <div class="p-1 form-control">
-                <label>Full Course Name</label><br>
-                <input name="course_name" type="text" placeholder="**Computer Programming In Nigeria" required>
+                <label>Full Department Name</label><br>
+                <input name="department_name" type="text" placeholder="**Computer Programming In Nigeria" required>
             </div>
             <div class="p-1 form-control">
-                <label>Course Code</label><br>
-                <input name="course_code" type="text" placeholder="**CEE123" required>
-            </div>
-            <div class="p-1 form-control">
-                <label>Course Department</label><br>
-                <input name="department_name" onkeyup='simpleAsyncSearch("functions/suggestDept", "department_search_input", "suggestion_list","newCourseButton")' id="department_search_input" type="text" placeholder="**Computer Engineering" required>
-                <ul id="suggestion_list">
-                </ul>
+                <label>Department Code</label><br>
+                <input name="department_code" type="text" placeholder="**CEE123" required>
             </div>
 
-            <input type="submit" disabled id="newCourseButton" value="Create">
+            <input type="submit" id="newDepartmentButton" value="Create">
         </form>
     </div>
 
