@@ -24,7 +24,7 @@ if (!isset($_SESSION['ultra_log'])) {
 <body>
     <div class="header">
         <h1>Create Lecturer</h1>
-        <strong>"And then the lord God formed man from the clay of the earth , and he breathed into his face the breath of life, and man became a living soul."<br> ~Genesis 2:7</strong>
+        <!-- <strong>"And then the lord God formed man from the clay of the earth , and he breathed into his face the breath of life, and man became a living soul."<br> ~Genesis 2:7</strong> -->
     </div>
 
     <div>

@@ -41,8 +41,8 @@ if (!isset($_SESSION['ultra_log'])) {
 
 <body>
     <div class="header">
-        <h1>Welcome To The Matrix</h1>
-        <strong>"With great power, comes great responsibility."<br> ~Ben Parker</strong>
+        <!-- <h1>Welcome To The Matrix</h1> -->
+        <!-- <strong>"With great power, comes great responsibility."<br> ~Ben Parker</strong> -->
     </div>
     <ul>
         <li><a href="assign-lecturer-course">Assign Course To Lecturer</a></li>

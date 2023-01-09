@@ -24,7 +24,7 @@ if (!isset($_SESSION['ultra_log'])) {
 <body>
     <div class="header">
         <h1>Create Department</h1>
-        <strong>"And the lord said, let there be light, and there was light"<br> ~Genesis</strong>
+        <!-- <strong>"And the lord said, let there be light, and there was light"<br> ~Genesis</strong> -->
     </div>
 
     <div>

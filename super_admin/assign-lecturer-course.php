@@ -22,7 +22,7 @@ if (!isset($_SESSION['ultra_log'])) {
 <body>
     <div class="header">
         <h1>Assign Course To Lecturer</h1>
-        <strong>"Perform your task and i shall know you. Perform your task and your genius shall befriend the more."<br> ~Ogwo David Emenike</strong>
+        <!-- <strong>"Perform your task and i shall know you. Perform your task and your genius shall befriend the more."<br> ~Ogwo David Emenike</strong> -->
     </div>
 
     <div>

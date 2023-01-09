@@ -23,7 +23,7 @@ if (!isset($_SESSION['ultra_log'])) {
 <body>
     <div class="header">
         <h1>Edit Student</h1>
-        <strong>"The biggest fool is one who cannot learn, even from their own mistakes"<br> ~Orji Michael Chukwuebuka</strong>
+        <!-- <strong>"The biggest fool is one who cannot learn, even from their own mistakes"<br> ~Orji Michael Chukwuebuka</strong> -->
     </div>
 
     <div>

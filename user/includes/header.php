@@ -37,9 +37,9 @@
 											<li class="dropdown">
 												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="course-materials">Materials</a>
 											</li>
-											<li class="dropdown">
+											<!-- <li class="dropdown">
 												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" onclick="showAlert('Coming Soon!','Feature Still In Construction')">Settings</a>
-											</li>
+											</li> -->
 											<li class="dropdown">
 												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" onclick="showAlert('Coming Soon!','Feature Still In Construction')">Departmental Fees</a>
 											</li>
