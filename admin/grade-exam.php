@@ -58,7 +58,7 @@ if (isset($_GET['result_id']) && isset($_GET['course_id']) && isset($_GET['semes
                                         <h3>Grade Students Exams</h3>
                                     </div>
                                     <div class="dropdown">
-                                        <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">...</a>
+                                        <!-- <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">...</a> -->
 
                                         <!-- <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="edit-incourse"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
