@@ -26,7 +26,7 @@ switch ($_POST) {
 
 
 
-            $orderby = " ORDER BY id desc";
+            $orderby = " ORDER BY id asc";
             //echo $queryCondition;
             $query = "SELECT * FROM courses " . $queryCondition . $orderby . " LIMIT 0,6";
             $result = $db_handle->runQuery($query);

@@ -4,11 +4,11 @@ require_once('functions.php');
 
 $firstName = $_POST['first_name'];
 $lastName = $_POST['last_name'];
-$gender = 'Male';
+$gender = $_POST['gender'];
 $staffId = '-';
-if (str_contains('f', $_POST['gender']) || str_contains('F', $_POST['gender'])) {
-    $gender = 'Female';
-}
+// if (str_contains('f', $_POST['gender']) || str_contains('F', $_POST['gender'])) {
+//     $gender = 'Female';
+// }
 $email = $_POST['email'];
 $staffId = $_POST['staff_id'];
 $departmentId = getDepartmentId($_POST['department_name']);
