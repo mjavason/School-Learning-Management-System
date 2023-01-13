@@ -129,9 +129,17 @@ if (!isset($_GET['year'])) {
                                                                                             echo $exam;
                                                                                         }
                                                                                         ?>
-                                                                                <?php  ?>
                                                                                 <br>
                                                                                 Grade: <?php echo returnGrade($incourse + $exam); ?>
+                                                                                <br>
+                                                                                Comment: <strong><?php if (isset($personalResult['exam'])) {
+                                                                                                        $examComment = getExamComment($personalResult['exam']);
+                                                                                                        echo $examComment;
+                                                                                                    } else {
+                                                                                                        echo '-';
+                                                                                                    }
+                                                                                                    ?>
+                                                                                    <?php  ?></strong>
                                                                             </div>
                                                                             <!-- </a> -->
                                                                         </div>

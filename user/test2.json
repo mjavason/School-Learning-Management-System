@@ -1,26 +1,24 @@
 [
     {
-        "course_id": "1",
-        "course_credits": "3",
-        "course_set": "2017/2018",
-        "result_id": "2080"
+        "reg_num": "212",
+        "exam": [
+            {
+                "title": "Exam",
+                "total": 70,
+                "score": 70,
+                "comment": "Excellent Result. You&#039;re very good at practicals"
+            }
+        ]
     },
     {
-        "course_id": "2",
-        "course_credits": "6",
-        "course_set": "2017/2018",
-        "result_id": "2081"
-    },
-    {
-        "course_id": "5",
-        "course_credits": "2",
-        "course_set": "2017/2018",
-        "result_id": "2082"
-    },
-    {
-        "course_id": "7",
-        "course_credits": "3",
-        "course_set": "2017/2018",
-        "result_id": "2083"
+        "reg_num": "20170301803111",
+        "incourse": [
+            {
+                "title": "Attendance",
+                "total": 100,
+                "score": 25,
+                "comment": "-"
+            }
+        ]
     }
 ]

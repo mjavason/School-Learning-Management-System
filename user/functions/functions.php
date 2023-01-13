@@ -632,6 +632,66 @@ function compileIncourse($incourseArray)
   return ceil(30 * ((($scoretotal / $absoluteTotal) * 100) / 100));
 }
 
+function getAttendanceIncourse($incourseArray)
+{
+  $scoretotal = 0;
+  $absoluteTotal = 0;
+  if (isset($incourseArray)) {
+    foreach ($incourseArray as $incourse) {
+      $absoluteTotal += $incourse['total'];
+      $scoretotal += $incourse['score'];
+    }
+  } else {
+    return 0;
+  }
+  return ceil(30 * ((($scoretotal / $absoluteTotal) * 100) / 100));
+}
+
+function getQuizIncourse($incourseArray)
+{
+  $scoretotal = 0;
+  $absoluteTotal = 0;
+  if (isset($incourseArray)) {
+    foreach ($incourseArray as $incourse) {
+      $absoluteTotal += $incourse['total'];
+      $scoretotal += $incourse['score'];
+    }
+  } else {
+    return 0;
+  }
+  return ceil(30 * ((($scoretotal / $absoluteTotal) * 100) / 100));
+}
+
+function getProjectIncourse($incourseArray)
+{
+  $scoretotal = 0;
+  $absoluteTotal = 0;
+  if (isset($incourseArray)) {
+    foreach ($incourseArray as $incourse) {
+      $absoluteTotal += $incourse['total'];
+      $scoretotal += $incourse['score'];
+    }
+  } else {
+    return 0;
+  }
+  return ceil(30 * ((($scoretotal / $absoluteTotal) * 100) / 100));
+}
+
+function getPracticalIncourse($incourseArray)
+{
+  $scoretotal = 0;
+  $absoluteTotal = 0;
+  if (isset($incourseArray)) {
+    foreach ($incourseArray as $incourse) {
+      $absoluteTotal += $incourse['total'];
+      $scoretotal += $incourse['score'];
+    }
+  } else {
+    return 0;
+  }
+  return ceil(30 * ((($scoretotal / $absoluteTotal) * 100) / 100));
+}
+
 function compileExam($examArray)
 {
   $scoretotal = 0;
@@ -646,6 +706,20 @@ function compileExam($examArray)
   }
 
   return ceil(70 * ((($scoretotal / $absoluteTotal) * 100) / 100));
+}
+
+function getExamComment($examArray)
+{
+  $comment = '-';
+  if (isset($examArray)) {
+    foreach ($examArray as $exam) {
+      $comment = $exam['comment'];
+    }
+  } else {
+    return "-";
+  }
+
+  return $comment;
 }
 
 function calculateScoreByGrade($grade, $creditLoad)

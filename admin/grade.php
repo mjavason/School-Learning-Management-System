@@ -102,9 +102,9 @@ if (isset($_GET['result_id']) && isset($_GET['course_id']) && isset($_GET['semes
                                         <label>*Score</label>
                                             <input onkeyup="maxValue('student_score', 100)" id="student_score" max=10 type="number" placeholder="" class="form-control">
                                         </div>
-                                        <div class="col-12-xxxl col-lg-6 col-12 form-group">
+                                        <div style="display: none;" class="col-12-xxxl col-lg-6 col-12 form-group">
                                             <label>Comment</label>
-                                            <input type="text" id="grade_comment" placeholder="**Excellent result..." class="form-control">
+                                            <input type="text" id="grade_comment" value="-" placeholder="**Excellent result..." class="form-control">
                                         </div>
                                         <!-- <div class="col-12 form-group">
                                             <label>Comments</label>
