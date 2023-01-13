@@ -577,10 +577,10 @@ function calculateStudentLevel($set)
   $set = explode('/', $set);
   $year = date('Y');
   $level = 0;
-  if (isset($set[0])) {
-    $level = ($year - $set[0]);
+  if (isset($set[1])) {
+    $level = ($year - $set[1]);
   }
-  createLog('Success', 'calculateStudentLevel');
+  //createLog('Success', 'calculateStudentLevel');
   if ($level < 1) {
     return 1;
   }
@@ -860,17 +860,46 @@ function checkIfCourseSessionExistsAndReturnInfo($courseId)
 
 function addNewCourseToStudent($courseId, $resultId, $credits, $resultSet, $studentReg)
 {
+  $courseExists = false;
   $entry = array('course_id' => $courseId, 'course_credits' => $credits, 'course_set' => $resultSet, 'result_id' => $resultId);
   $coursesTaken = getCoursesTakenByStudent($studentReg);
 
-  array_push($coursesTaken, $entry);
-  $coursesTaken = json_encode($coursesTaken);
 
-  global $db_handle;
-  //$response = [];
-  $result = $db_handle->updateSingleColumnWhere1Condition('students', 'courses_taken', $coursesTaken, 'reg_no', $studentReg);
 
-  return $result;
+  if (!empty($coursesTaken)) {
+    foreach ($coursesTaken as $courses) {
+      if (isset($courses['course_id'])) {
+        if ($courses['course_id'] == $courseId && $courses['course_set'] == $resultSet && $courses['course_credits'] == $credits) {
+          if (isset($courses['result_id'])) {
+            if ($resultId == $courses['result_id']) {
+              $courseExists = true;
+            }
+          } else {
+            $courseExists = true;
+          }
+          //createLog('Success', 'updateStudentCourseTaken');
+          return true;
+        }
+      }
+    }
+  }
+
+  if (!$courseExists) {
+    if ($coursesTaken == null) {
+      $coursesTaken = [];
+    }
+
+    array_push($coursesTaken, $entry);
+    $coursesTaken = json_encode($coursesTaken);
+
+    global $db_handle;
+    //$response = [];
+    $result = $db_handle->updateSingleColumnWhere1Condition('students', 'courses_taken', $coursesTaken, 'reg_no', $studentReg);
+
+    return $result;
+  } else {
+    return true;
+  }
 }
 
 function doesCourseRegistrationHaveDuplicate($studentReg, $newCourseSessionId)

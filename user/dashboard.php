@@ -48,6 +48,9 @@ if (isset($_SESSION['ultra_log'])) {
 					$coursesTaken = getCoursesTakenByStudent($_SESSION['student_reg']);
 
 					$studentStarterYear = date('Y') - $studentLevel;
+					if($studentLevel == 1){
+						$studentStarterYear = date('Y');
+					}
 					$counter = 1;
 					for ($i = $studentStarterYear; $i <= date('Y'); $i++) {
 						$year = $i;

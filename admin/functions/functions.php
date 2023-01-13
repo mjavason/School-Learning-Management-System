@@ -1009,6 +1009,9 @@ function updateStudentCourseTaken($studentRegNum, $courseId, $courseCredits, $co
   }
 
   if (!$courseExists) {
+    if($allCoursesTaken == null){
+      $allCoursesTaken = [];
+    }
     $newCourse = array("course_id" => $courseId, "course_credits" => $courseCredits, "course_set" => $courseSet);
     array_push($allCoursesTaken, $newCourse);
     $allCoursesTakenJson = json_encode($allCoursesTaken);

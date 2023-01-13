@@ -54,7 +54,7 @@
                         <ul class="settings-list">
                             <li><a href="my-profile"><i class="flaticon-user"></i>My Profile</a></li>
                             <!-- <li><a href="#"><i class="flaticon-list"></i>Task</a></li> -->
-                            <li><a href="https://google.com"><i class="flaticon-chat-comment-oval-speech-bubble-with-text-lines"></i>Contact Super Admins</a></li>
+                            <li><a href="mailto: cheyajewel@gmail.com?subject = Super Admin Support"><i class="flaticon-chat-comment-oval-speech-bubble-with-text-lines"></i>Contact Super Admins</a></li>
                             <li><a href="edit-profile"><i class="flaticon-gear-loading"></i>Account Settings</a></li>
                             <li><a onclick="logout()"><i class="flaticon-turn-off"></i>Log Out</a></li>
                         </ul>
