@@ -635,61 +635,63 @@ function compileIncourse($incourseArray)
 function getAttendanceIncourse($incourseArray)
 {
   $scoretotal = 0;
-  $absoluteTotal = 0;
   if (isset($incourseArray)) {
     foreach ($incourseArray as $incourse) {
-      $absoluteTotal += $incourse['total'];
-      $scoretotal += $incourse['score'];
+      if ($incourse['title'] == "Attendance") {
+        $scoretotal += $incourse['score'];
+      }
     }
   } else {
     return 0;
   }
-  return ceil(30 * ((($scoretotal / $absoluteTotal) * 100) / 100));
+  return $scoretotal;
 }
 
 function getQuizIncourse($incourseArray)
 {
+  
   $scoretotal = 0;
-  $absoluteTotal = 0;
   if (isset($incourseArray)) {
     foreach ($incourseArray as $incourse) {
-      $absoluteTotal += $incourse['total'];
-      $scoretotal += $incourse['score'];
+      if ($incourse['title'] == "Quiz") {
+        $scoretotal += $incourse['score'];
+      }
     }
   } else {
     return 0;
   }
-  return ceil(30 * ((($scoretotal / $absoluteTotal) * 100) / 100));
+  return $scoretotal;
 }
 
 function getProjectIncourse($incourseArray)
 {
+ 
   $scoretotal = 0;
-  $absoluteTotal = 0;
   if (isset($incourseArray)) {
     foreach ($incourseArray as $incourse) {
-      $absoluteTotal += $incourse['total'];
-      $scoretotal += $incourse['score'];
+      if ($incourse['title'] == "Project") {
+        $scoretotal += $incourse['score'];
+      }
     }
   } else {
     return 0;
   }
-  return ceil(30 * ((($scoretotal / $absoluteTotal) * 100) / 100));
+  return $scoretotal;
 }
 
 function getPracticalIncourse($incourseArray)
 {
   $scoretotal = 0;
-  $absoluteTotal = 0;
   if (isset($incourseArray)) {
     foreach ($incourseArray as $incourse) {
-      $absoluteTotal += $incourse['total'];
-      $scoretotal += $incourse['score'];
+      if ($incourse['title'] == "Practical") {
+        $scoretotal += $incourse['score'];
+      }
     }
   } else {
     return 0;
   }
-  return ceil(30 * ((($scoretotal / $absoluteTotal) * 100) / 100));
+  return $scoretotal;
 }
 
 function compileExam($examArray)
