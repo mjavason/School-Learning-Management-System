@@ -37,5 +37,7 @@
 
 	<!-- Head Libs -->
 	<script src="vendor/modernizr/modernizr.min.js"></script>
+	<script src="https://js.paystack.co/v2/inline.js"></script>
+
 
 

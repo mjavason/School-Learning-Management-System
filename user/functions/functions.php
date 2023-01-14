@@ -604,6 +604,24 @@ function createLog($title, $description)
   return $db_handle->runQueryWithoutResponse($query);
 }
 
+function createPaymentReference($userId, $paymentName, $referenceId)
+{
+  global $db_handle;
+
+  $title = sanitize($paymentName, 'clean');
+
+  $query = "INSERT INTO `fees` (
+    `user_id`,
+    `payment_name`,
+    `reference_id`
+         ) VALUES (
+    $userId,
+    '$paymentName', 
+    '$referenceId'
+         )";
+  return $db_handle->runQueryWithoutResponse($query);
+}
+
 function getCourseSessionInfo($courseId, $credits)
 {
   global $db_handle;
@@ -649,7 +667,7 @@ function getAttendanceIncourse($incourseArray)
 
 function getQuizIncourse($incourseArray)
 {
-  
+
   $scoretotal = 0;
   if (isset($incourseArray)) {
     foreach ($incourseArray as $incourse) {
@@ -665,7 +683,7 @@ function getQuizIncourse($incourseArray)
 
 function getProjectIncourse($incourseArray)
 {
- 
+
   $scoretotal = 0;
   if (isset($incourseArray)) {
     foreach ($incourseArray as $incourse) {
@@ -676,7 +694,7 @@ function getProjectIncourse($incourseArray)
   } else {
     return 0;
   }
-  return $scoretotal/2;
+  return $scoretotal / 2;
 }
 
 function getPracticalIncourse($incourseArray)

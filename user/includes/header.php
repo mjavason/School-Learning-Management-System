@@ -28,9 +28,9 @@
 												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="cgpa">CGPA</a>
 											</li>
 											<li class="dropdown">
-												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="announcements">Announcements 
-													<?php if($_SESSION['unread_announcements'] > 0){ ?>
-													<span class="badge badge-primary m-1"><?= $_SESSION['unread_announcements'] ?></span>
+												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" href="announcements">Announcements
+													<?php if ($_SESSION['unread_announcements'] > 0) { ?>
+														<span class="badge badge-primary m-1"><?= $_SESSION['unread_announcements'] ?></span>
 													<?php } ?>
 												</a>
 											</li>
@@ -41,7 +41,9 @@
 												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" onclick="showAlert('Coming Soon!','Feature Still In Construction')">Settings</a>
 											</li> -->
 											<li class="dropdown">
-												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" onclick="showAlert('Coming Soon!','Feature Still In Construction')">Departmental Fees</a>
+												<a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" onclick="payWithPaystack('<?= $_SESSION['student_email'] ?>', '<?= $_SESSION['first_name'] ?>', '<?= $_SESSION['last_name'] ?>', 1000)">Departmental Fees</a>
+
+												<!-- <a class="dropdown-item" data-hash data-hash-offset="0" data-hash-offset-lg="95" onclick="showAlert('Coming Soon!','Feature Still In Construction')">Departmental Fees</a> -->
 											</li>
 										<?php } ?>
 										<!-- <li class="dropdown">
