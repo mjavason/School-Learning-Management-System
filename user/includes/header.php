@@ -6,7 +6,7 @@
 					<div class="header-row">
 						<div class="header-logo">
 							<a href="index">
-								<img alt="ESUT Repo" width="100" height="48" data-sticky-width="82" data-sticky-height="40" src="img/logo-default-slim.png">
+								<img alt="AKKHOR School Management System" width="140" height="48" data-sticky-width="82" data-sticky-height="40" src="img/logo2.png">
 							</a>
 						</div>
 					</div>

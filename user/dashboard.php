@@ -41,7 +41,7 @@ if (isset($_SESSION['ultra_log'])) {
 			<div class="container position-relative py-5" style="min-height: 643px;" id="home">
 				<?php require_once('includes/svg_animation.php') ?>
 				<div class="row align-items-center py-5 mt-5 p-relative z-index-1">
-					<h1 class="card-title mb-2 font-weight-bold transition-2ms">Choose Year and View Results <a href="#" class="btn btn-primary btn-with-arrow mb-2" href="#">Download<span><i class="fas fa-download"></i></span></a></h1>
+					<h1 class="card-title mb-2 font-weight-bold transition-2ms">Choose Year and View Results </h1>
 
 					<?php
 					$studentLevel = calculateStudentLevel($_SESSION['student_set']);
@@ -61,7 +61,8 @@ if (isset($_SESSION['ultra_log'])) {
 									<a href="courses?year=<?php echo $year; ?>&level=<?= $counter ?>">
 										<div class="card-body">
 											<h4 class="card-title mb-1 text-4 font-weight-bold transition-2ms">
-												Year <?php echo $counter; ?> (<?php echo ($year) ?>)
+												Year <?php echo $counter; ?>
+												<!-- Year <?php echo $counter; ?> (<?php echo ($year) ?>) -->
 											</h4>
 											Courses: <?= countCoursesPerYear($coursesTaken, $year) ?>
 										</div>

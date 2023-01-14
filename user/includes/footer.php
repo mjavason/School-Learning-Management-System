@@ -4,7 +4,7 @@
 		<div class="container py-2">
 		<div class="col-lg-2 align-self-center mb-5 mb-lg-0">
 				<a href="index">
-					<img src="img/logo-default-slim.png" class="img-fluid" alt="ESUT Repo" width="100" />
+					<img src="img/logo2.png" class="img-fluid" alt="AKKHOR SLMS" width="100" />
 				</a>
 			</div>
 			<div class="row justify-content-between py-4">
