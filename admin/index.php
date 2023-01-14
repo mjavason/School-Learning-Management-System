@@ -12,7 +12,7 @@ gotoPage('active-courses');
 <html class="no-js" lang="">
 
 <head>
-    <title>ESUT Result Repo Admin Home Page</title>
+    <title>AKKHOR | Admin Home Page</title>
     <meta name="keywords" content="ESUT result school students courses upload" />
     <meta name="description" content="View course results online">
     <?php require_once('includes/head.php'); ?>

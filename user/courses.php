@@ -22,10 +22,10 @@ if (!isset($_GET['year'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>ESUT Result Repo</title>
+    <title>AKKHOR | Year <?= $_GET['year'] ?> Courses and their Results</title>
 
     <meta name="keywords" content="ESUT result school students courses upload" />
-    <meta name="description" content="View course results online">
+    <meta name="description" content="View yearly course results">
     <meta name="author" content="gamma group">
 
     <?php require_once('includes/head.php') ?>

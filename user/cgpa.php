@@ -20,10 +20,10 @@ if (isset($_SESSION['ultra_log'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>ESUT Result Repo: Cumulative Grade Point Average</title>
+    <title>AKKHOR | Cumulative Grade Point Average</title>
 
     <meta name="keywords" content="ESUT result school students courses upload" />
-    <meta name="description" content="View course results online">
+    <meta name="description" content="View CGPA Performance">
     <meta name="author" content="gamma group">
 
     <?php require_once('includes/head.php') ?>
