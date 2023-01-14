@@ -669,14 +669,14 @@ function getProjectIncourse($incourseArray)
   $scoretotal = 0;
   if (isset($incourseArray)) {
     foreach ($incourseArray as $incourse) {
-      if ($incourse['title'] == "Project") {
+      if ($incourse['title'] == "Assignment" || $incourse['title'] == "Project") {
         $scoretotal += $incourse['score'];
       }
     }
   } else {
     return 0;
   }
-  return $scoretotal;
+  return $scoretotal/2;
 }
 
 function getPracticalIncourse($incourseArray)

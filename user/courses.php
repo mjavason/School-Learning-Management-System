@@ -113,69 +113,70 @@ if (!isset($_GET['year'])) {
                                                                                 </h4>
                                                                                 <?php ?>
                                                                                 <strong>Incourse:</strong> <?php
+                                                                                                            if (isset($personalResult['incourse'])) {
+                                                                                                                $incourse = compileIncourse($personalResult['incourse']);
+                                                                                                                echo $incourse;
+                                                                                                            } else {
+                                                                                                                $incourse = 0;
+                                                                                                                echo $incourse;
+                                                                                                            } ?>
+                                                                                <br>
+                                                                                Attendance: <?php
+                                                                                            $incourse = 0;
                                                                                             if (isset($personalResult['incourse'])) {
-                                                                                                $incourse = compileIncourse($personalResult['incourse']);
-                                                                                                echo $incourse;
+                                                                                                $incourse = getAttendanceIncourse($personalResult['incourse']);
+                                                                                                echo $incourse . '%';
                                                                                             } else {
-                                                                                                $incourse = 0;
                                                                                                 echo $incourse;
                                                                                             } ?>
                                                                                 <br>
-                                                                                Attendance: <?php
-                                                                                                $incourse = 0;
+                                                                                Assignment: <?php
+                                                                                            $incourse = 0;
                                                                                             if (isset($personalResult['incourse'])) {
-                                                                                                $incourse = getAttendanceIncourse($personalResult['incourse']);
-                                                                                                echo $incourse.'%';
+                                                                                                $incourse = getProjectIncourse($personalResult['incourse']);
+                                                                                                echo $incourse . '%';
                                                                                             } else {
                                                                                                 echo $incourse;
                                                                                             } ?>
                                                                                 <br>
                                                                                 Quiz: <?php
-                                                                                                $incourse = 0;
-                                                                                            if (isset($personalResult['incourse'])) {
-                                                                                                $incourse = getQuizIncourse($personalResult['incourse']);
-                                                                                                echo $incourse.'%';
-                                                                                            } else {
-                                                                                                echo $incourse;
-                                                                                            } ?>
+                                                                                        $incourse = 0;
+                                                                                        if (isset($personalResult['incourse'])) {
+                                                                                            $incourse = getQuizIncourse($personalResult['incourse']);
+                                                                                            echo $incourse . '%';
+                                                                                        } else {
+                                                                                            echo $incourse;
+                                                                                        } ?>
                                                                                 <br>
                                                                                 Practical: <?php
-                                                                                                $incourse = 0;
+                                                                                            $incourse = 0;
                                                                                             if (isset($personalResult['incourse'])) {
                                                                                                 $incourse = getPracticalIncourse($personalResult['incourse']);
-                                                                                                echo $incourse.'%';
+                                                                                                echo $incourse . '%';
                                                                                             } else {
                                                                                                 echo $incourse;
                                                                                             } ?>
                                                                                 <br>
-                                                                                Project: <?php
-                                                                                                $incourse = 0;
-                                                                                            if (isset($personalResult['incourse'])) {
-                                                                                                $incourse = getProjectIncourse($personalResult['incourse']);
-                                                                                                echo $incourse.'%';
-                                                                                            } else {
-                                                                                                echo $incourse;
-                                                                                            } ?>
-                                                                                <br>
+
                                                                                 <strong>Exam:</strong> <?php if (isset($personalResult['exam'])) {
-                                                                                            $exam = compileExam($personalResult['exam']);
-                                                                                            echo $exam;
-                                                                                        } else {
-                                                                                            $exam = 0;
-                                                                                            echo $exam;
-                                                                                        }
-                                                                                        ?>
+                                                                                                            $exam = compileExam($personalResult['exam']);
+                                                                                                            echo $exam;
+                                                                                                        } else {
+                                                                                                            $exam = 0;
+                                                                                                            echo $exam;
+                                                                                                        }
+                                                                                                        ?>
                                                                                 <br>
                                                                                 <strong>Grade:</strong> <?php echo returnGrade($incourse + $exam); ?>
                                                                                 <br>
                                                                                 <br>
-                                                                              <strong><?php if (isset($personalResult['exam'])) {
-                                                                                                        $examComment = getExamComment($personalResult['exam']);
-                                                                                                        echo $examComment;
-                                                                                                    } else {
-                                                                                                        echo '-';
-                                                                                                    }
-                                                                                                    ?>
+                                                                                <strong><?php if (isset($personalResult['exam'])) {
+                                                                                            $examComment = getExamComment($personalResult['exam']);
+                                                                                            echo $examComment;
+                                                                                        } else {
+                                                                                            echo '-';
+                                                                                        }
+                                                                                        ?>
                                                                                     <?php  ?></strong>
                                                                             </div>
                                                                             <!-- </a> -->
@@ -243,69 +244,70 @@ if (!isset($_GET['year'])) {
                                                                                 </h4>
                                                                                 <?php ?>
                                                                                 <strong>Incourse:</strong> <?php
+                                                                                                            if (isset($personalResult['incourse'])) {
+                                                                                                                $incourse = compileIncourse($personalResult['incourse']);
+                                                                                                                echo $incourse;
+                                                                                                            } else {
+                                                                                                                $incourse = 0;
+                                                                                                                echo $incourse;
+                                                                                                            } ?>
+                                                                                <br>
+                                                                                Attendance: <?php
+                                                                                            $incourse = 0;
                                                                                             if (isset($personalResult['incourse'])) {
-                                                                                                $incourse = compileIncourse($personalResult['incourse']);
-                                                                                                echo $incourse;
+                                                                                                $incourse = getAttendanceIncourse($personalResult['incourse']);
+                                                                                                echo $incourse . '%';
                                                                                             } else {
-                                                                                                $incourse = 0;
                                                                                                 echo $incourse;
                                                                                             } ?>
                                                                                 <br>
-                                                                                Attendance: <?php
-                                                                                                $incourse = 0;
+                                                                                Assignment: <?php
+                                                                                            $incourse = 0;
                                                                                             if (isset($personalResult['incourse'])) {
-                                                                                                $incourse = getAttendanceIncourse($personalResult['incourse']);
-                                                                                                echo $incourse.'%';
+                                                                                                $incourse = getProjectIncourse($personalResult['incourse']);
+                                                                                                echo $incourse . '%';
                                                                                             } else {
                                                                                                 echo $incourse;
                                                                                             } ?>
                                                                                 <br>
                                                                                 Quiz: <?php
-                                                                                                $incourse = 0;
-                                                                                            if (isset($personalResult['incourse'])) {
-                                                                                                $incourse = getQuizIncourse($personalResult['incourse']);
-                                                                                                echo $incourse.'%';
-                                                                                            } else {
-                                                                                                echo $incourse;
-                                                                                            } ?>
+                                                                                        $incourse = 0;
+                                                                                        if (isset($personalResult['incourse'])) {
+                                                                                            $incourse = getQuizIncourse($personalResult['incourse']);
+                                                                                            echo $incourse . '%';
+                                                                                        } else {
+                                                                                            echo $incourse;
+                                                                                        } ?>
                                                                                 <br>
                                                                                 Practical: <?php
-                                                                                                $incourse = 0;
+                                                                                            $incourse = 0;
                                                                                             if (isset($personalResult['incourse'])) {
                                                                                                 $incourse = getPracticalIncourse($personalResult['incourse']);
-                                                                                                echo $incourse.'%';
+                                                                                                echo $incourse . '%';
                                                                                             } else {
                                                                                                 echo $incourse;
                                                                                             } ?>
                                                                                 <br>
-                                                                                Project: <?php
-                                                                                                $incourse = 0;
-                                                                                            if (isset($personalResult['incourse'])) {
-                                                                                                $incourse = getProjectIncourse($personalResult['incourse']);
-                                                                                                echo $incourse.'%';
-                                                                                            } else {
-                                                                                                echo $incourse;
-                                                                                            } ?>
-                                                                                <br>
+
                                                                                 <strong>Exam:</strong> <?php if (isset($personalResult['exam'])) {
-                                                                                            $exam = compileExam($personalResult['exam']);
-                                                                                            echo $exam;
-                                                                                        } else {
-                                                                                            $exam = 0;
-                                                                                            echo $exam;
-                                                                                        }
-                                                                                        ?>
+                                                                                                            $exam = compileExam($personalResult['exam']);
+                                                                                                            echo $exam;
+                                                                                                        } else {
+                                                                                                            $exam = 0;
+                                                                                                            echo $exam;
+                                                                                                        }
+                                                                                                        ?>
                                                                                 <br>
                                                                                 <strong>Grade:</strong> <?php echo returnGrade($incourse + $exam); ?>
                                                                                 <br>
                                                                                 <br>
-                                                                              <strong><?php if (isset($personalResult['exam'])) {
-                                                                                                        $examComment = getExamComment($personalResult['exam']);
-                                                                                                        echo $examComment;
-                                                                                                    } else {
-                                                                                                        echo '-';
-                                                                                                    }
-                                                                                                    ?>
+                                                                                <strong><?php if (isset($personalResult['exam'])) {
+                                                                                            $examComment = getExamComment($personalResult['exam']);
+                                                                                            echo $examComment;
+                                                                                        } else {
+                                                                                            echo '-';
+                                                                                        }
+                                                                                        ?>
                                                                                     <?php  ?></strong>
                                                                             </div>
                                                                             <!-- </a> -->
